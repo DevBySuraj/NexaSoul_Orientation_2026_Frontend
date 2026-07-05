@@ -1,0 +1,6 @@
+{
+  "name": "NexaSoul Orientation 2026",
+  "description": "Official orientation website for NexaSoul, Chandigarh University's fastest-growing Frontend x Full-Stack Development Community.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
