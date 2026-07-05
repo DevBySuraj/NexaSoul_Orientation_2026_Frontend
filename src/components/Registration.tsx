@@ -81,6 +81,7 @@ export const Registration: React.FC = () => {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   // Custom placeholder states
   const [placeholders] = useState({
@@ -108,6 +109,9 @@ export const Registration: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
     if (formErrors[name]) {
       setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
+    if (apiError) {
+      setApiError(null);
     }
   };
 
@@ -140,13 +144,29 @@ export const Registration: React.FC = () => {
     return Object.keys(errors).length === 0;
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setApiError(null);
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${apiUrl}/api/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Registration failed. Please try again.');
+      }
+
       setIsSubmitted(true);
       localStorage.setItem('nexasoul_registered', JSON.stringify(formData));
       
@@ -160,7 +180,11 @@ export const Registration: React.FC = () => {
       } catch (err) {
         window.open('https://nexasoul.vercel.app/register', '_blank');
       }
-    }, 1200);
+    } catch (err: any) {
+      setApiError(err.message || 'Failed to connect to the registration server.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleJoinMembership = (e: React.MouseEvent) => {
@@ -275,7 +299,7 @@ export const Registration: React.FC = () => {
                 </div>
 
                 {/* Right Column: Interactive Registration Form */}
-                <form className="lg:col-span-7 bg-slate-100/40 border border-slate-200/50 p-6 sm:p-8 rounded-2xl space-y-5 text-left backdrop-blur-sm">
+                <form onSubmit={handleRegister} className="lg:col-span-7 bg-slate-100/40 border border-slate-200/50 p-6 sm:p-8 rounded-2xl space-y-5 text-left backdrop-blur-sm">
                   
                   {/* Full Name Input */}
                   <div className="space-y-1.5">
@@ -382,13 +406,20 @@ export const Registration: React.FC = () => {
                     )}
                   </div>
 
+                  {/* API Error Alert */}
+                  {apiError && (
+                    <div className="p-3.5 rounded-xl bg-red-50/80 border border-red-200 text-red-600 text-xs sm:text-sm font-sans font-semibold flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                      <span>{apiError}</span>
+                    </div>
+                  )}
+
                   {/* Multi-action Interactive Buttons Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
                     
                     {/* Primary Submit: Register with strong gradient */}
                     <button 
-                      type="button"
-                      onClick={handleRegister}
+                      type="submit"
                       disabled={isSubmitting}
                       className="h-13 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-sans font-semibold text-sm sm:text-[0.95rem] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(99,102,241,0.3)] transition-all flex items-center justify-center gap-2 group cursor-pointer border-0 shadow-md"
                     >
