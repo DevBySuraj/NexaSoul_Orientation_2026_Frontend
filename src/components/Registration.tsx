@@ -161,7 +161,15 @@ export const Registration: React.FC = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const data = await (async () => {
+        const contentType = response.headers.get('content-type');
+        if (contentType && contentType.includes('application/json')) {
+          return await response.json();
+        } else {
+          const text = await response.text();
+          throw new Error(text.substring(0, 100) || 'Received non-JSON response from server.');
+        }
+      })();
 
       if (!response.ok) {
         throw new Error(data.message || 'Registration failed. Please try again.');
