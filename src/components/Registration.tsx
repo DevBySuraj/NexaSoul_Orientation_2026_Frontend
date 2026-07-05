@@ -177,17 +177,6 @@ export const Registration: React.FC = () => {
 
       setIsSubmitted(true);
       localStorage.setItem('nexasoul_registered', JSON.stringify(formData));
-      
-      // Redirect to Vercel registration
-      try {
-        if (window.top) {
-          window.top.location.href = 'https://nexasoul.vercel.app/register';
-        } else {
-          window.location.href = 'https://nexasoul.vercel.app/register';
-        }
-      } catch (err) {
-        window.open('https://nexasoul.vercel.app/register', '_blank');
-      }
     } catch (err: any) {
       setApiError(err.message || 'Failed to connect to the registration server.');
     } finally {
