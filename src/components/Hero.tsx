@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
                 </span>
               </h1>
               <h2 className="text-3xl sm:text-4xl font-sora font-bold text-slate-800 tracking-tight mt-1">
-                NexaSoul Orientation 2026
+                NexaSoul Udbhav 2026
               </h2>
               <AnimatedTagline />
             </div>
