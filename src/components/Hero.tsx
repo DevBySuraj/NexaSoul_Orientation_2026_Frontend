@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import {
   ArrowRight,
@@ -36,8 +36,8 @@ const polar = (angleDeg: number, radius: number) => {
 };
 
 // Unified radius and size for a balanced, symmetrical circle
-const UNIFIED_RADIUS = 45;
-const UNIFIED_SIZE = 90;
+const UNIFIED_RADIUS = 55;
+const UNIFIED_SIZE = 95;
 
 // 10 cards distributed at exactly 36-degree intervals (360 / 10 = 36)
 const SKILL_CARDS: SkillCard[] = [
@@ -57,6 +57,8 @@ const CENTER = { top: 50, left: 50 };
 
 interface SkillOrbitCardProps {
   card: SkillCard;
+  rotationAngle: number;
+  isAnimating: boolean;
   isHovered: boolean;
   anyHovered: boolean;
   onHoverStart: () => void;
@@ -65,13 +67,15 @@ interface SkillOrbitCardProps {
 
 const SkillOrbitCard: React.FC<SkillOrbitCardProps> = ({
   card,
+  rotationAngle,
+  isAnimating,
   isHovered,
   anyHovered,
   onHoverStart,
   onHoverEnd,
 }) => {
   const Icon = card.icon;
-  const pos = polar(card.angle, card.radius);
+  const pos = polar(card.angle + rotationAngle, card.radius);
 
   // Dynamic responsive sizing using container queries (cqw)
   const relativeSize = `${(card.size / 440) * 100}cqw`;
@@ -90,9 +94,13 @@ const SkillOrbitCard: React.FC<SkillOrbitCardProps> = ({
       }}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.5, filter: 'blur(6px)' }}
-        animate={{ scale: isHovered ? 1.15 : 1, filter: 'blur(0px)', opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0, scale: 0.2, filter: 'blur(4px)' }}
+        animate={{ opacity: 1, scale: isHovered ? 1.15 : 1, filter: 'blur(0px)' }}
+        transition={{
+          delay: isAnimating ? 0 : card.delay,
+          duration: isHovered ? 0.35 : 0.6,
+          ease: [0.16, 1, 0.3, 1],
+        }}
         onMouseEnter={onHoverStart}
         onMouseLeave={onHoverEnd}
         className="relative w-full h-full group cursor-pointer"
@@ -131,6 +139,29 @@ const SkillOrbitCard: React.FC<SkillOrbitCardProps> = ({
 
 export const Hero: React.FC = () => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [rotationAngle, setRotationAngle] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  // Trigger reveal animation sequence clockwise on load, then enable rotation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsAnimating(true);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Continuous clockwise loop animation that pauses on hover
+  useEffect(() => {
+    if (!isAnimating || hoveredId !== null) return;
+
+    let frameId: number;
+    const update = () => {
+      setRotationAngle((prev) => (prev + 0.15) % 360);
+      frameId = requestAnimationFrame(update);
+    };
+    frameId = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(frameId);
+  }, [isAnimating, hoveredId]);
 
   const activeCard = SKILL_CARDS.find((c) => c.id === hoveredId);
   const anyHovered = hoveredId !== null;
@@ -228,7 +259,7 @@ export const Hero: React.FC = () => {
                   </linearGradient>
                 </defs>
                 {SKILL_CARDS.map((c) => {
-                  const p = polar(c.angle, c.radius);
+                  const p = polar(c.angle + rotationAngle, c.radius);
                   const isThisHovered = hoveredId === c.id;
 
                   return (
@@ -240,10 +271,10 @@ export const Hero: React.FC = () => {
                       y2={p.top}
                       stroke={isThisHovered ? 'currentColor' : 'url(#lineGrad)'}
                       className={`transition-all duration-300 ${isThisHovered
-                        ? `${c.iconColor} opacity-80 stroke-[0.38]`
-                        : anyHovered
-                          ? 'opacity-[0.06] stroke-[0.1]'
-                          : 'opacity-30 stroke-[0.16]'
+                          ? `${c.iconColor} opacity-80 stroke-[0.38]`
+                          : anyHovered
+                            ? 'opacity-[0.06] stroke-[0.1]'
+                            : 'opacity-30 stroke-[0.16]'
                         }`}
                     />
                   );
@@ -252,7 +283,7 @@ export const Hero: React.FC = () => {
 
               {/* Dynamic energy pulses traveling along symmetrical lines */}
               {SKILL_CARDS.map((c) => {
-                const p = polar(c.angle, c.radius);
+                const p = polar(c.angle + rotationAngle, c.radius);
                 const isThisHovered = hoveredId === c.id;
 
                 return (
@@ -272,8 +303,8 @@ export const Hero: React.FC = () => {
                       ease: 'easeOut',
                     }}
                     className={`absolute w-2 h-2 rounded-full pointer-events-none z-[6] ${isThisHovered
-                      ? `bg-current ${c.iconColor} shadow-[0_0_8px_3px_rgba(255,255,255,0.7)]`
-                      : 'bg-indigo-300 shadow-[0_0_5px_1.5px_rgba(99,102,241,0.3)]'
+                        ? `bg-current ${c.iconColor} shadow-[0_0_8px_3px_rgba(255,255,255,0.7)]`
+                        : 'bg-indigo-300 shadow-[0_0_5px_1.5px_rgba(99,102,241,0.3)]'
                       }`}
                     style={{ transform: 'translate(-50%, -50%)' }}
                   />
@@ -320,6 +351,8 @@ export const Hero: React.FC = () => {
                 <SkillOrbitCard
                   key={card.id}
                   card={card}
+                  rotationAngle={rotationAngle}
+                  isAnimating={isAnimating}
                   isHovered={hoveredId === card.id}
                   anyHovered={anyHovered}
                   onHoverStart={() => setHoveredId(card.id)}
