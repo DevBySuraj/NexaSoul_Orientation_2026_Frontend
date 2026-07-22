@@ -4,11 +4,11 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { 
-  Sparkles, 
-  CheckCircle2, 
-  AlertCircle, 
-  RefreshCw, 
+import {
+  Sparkles,
+  CheckCircle2,
+  AlertCircle,
+  RefreshCw,
   ArrowRight,
   Compass,
   Lock
@@ -20,7 +20,7 @@ const DevIllustration: React.FC = () => {
     <div className="bg-slate-950/95 rounded-2xl border border-slate-800 p-5 sm:p-6 font-mono text-[11.5px] text-slate-300 relative overflow-hidden shadow-[0_24px_50px_rgba(0,0,0,0.6)] h-[320px] flex flex-col justify-between">
       {/* Decorative top lightning line */}
       <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-indigo-500/60 to-transparent"></div>
-      
+
       {/* Tab bar header */}
       <div className="flex items-center justify-between border-b border-slate-900 pb-2.5 mb-2.5 text-[9px] text-slate-500">
         <div className="flex items-center gap-1.5">
@@ -186,7 +186,7 @@ export const Registration: React.FC = () => {
 
   const handleJoinMembership = (e: React.MouseEvent) => {
     e.preventDefault();
-    
+
     // Redirect directly to Vercel registration bypassing input validation
     try {
       if (window.top) {
@@ -207,7 +207,7 @@ export const Registration: React.FC = () => {
 
   return (
     <section id="register" className="py-14 md:py-20 lg:py-28 bg-transparent relative overflow-hidden">
-      
+
       {/* Soft Multi-color Ambient Radial Glows Behind the Card */}
       <div className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-500/10 via-cyan-500/5 to-transparent blur-[120px] pointer-events-none z-0" />
       <div className="absolute bottom-[15%] right-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-emerald-500/5 via-indigo-500/8 to-transparent blur-[130px] pointer-events-none z-0" />
@@ -216,18 +216,18 @@ export const Registration: React.FC = () => {
       {/* Tiny floating blurred elements */}
       <div className="absolute top-1/4 left-12 w-3 h-3 bg-indigo-500/20 rounded-full blur-[2px] animate-bounce" style={{ animationDuration: '3s' }} />
       <div className="absolute bottom-1/3 right-16 w-5 h-5 bg-emerald-500/20 rounded-lg blur-[2px] rotate-12 animate-pulse" style={{ animationDuration: '5s' }} />
-      
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
-        
+
         {/* Triple gradient border wrapper container */}
         <div className="relative p-[1.5px] rounded-[32px] bg-gradient-to-r from-blue-500 via-orange-500 to-emerald-500 shadow-[0_32px_80px_-16px_rgba(99,102,241,0.14)] sm:shadow-[0_48px_110px_-24px_rgba(99,102,241,0.18)]">
-          
+
           {/* Subtle inner highlight and premium white-to-light-blue glass container background */}
           <div className="bg-gradient-to-b from-white/98 via-sky-50/85 to-white/95 backdrop-blur-xl rounded-[30px] p-6 sm:p-10 md:p-12 lg:p-14 relative overflow-hidden">
-            
+
             {/* Subtle premium card visual light reflections */}
             <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-white/0 via-white/80 to-white/0 z-10" />
-            
+
             {/* Internal glass orbs for aesthetic complexity */}
             <div className="absolute -right-24 -top-24 w-80 h-80 bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
             <div className="absolute -left-24 -bottom-24 w-80 h-80 bg-gradient-to-tr from-emerald-500/5 via-purple-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -237,7 +237,7 @@ export const Registration: React.FC = () => {
                 <div className="w-18 h-18 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-500/20 shadow-[0_8px_30px_rgba(16,185,129,0.15)]">
                   <CheckCircle2 className="w-9 h-9" strokeWidth={2.5} />
                 </div>
-                
+
                 <div className="space-y-3">
                   <h3 className="text-3xl font-sora font-bold text-slate-900 tracking-tight">Registration Locked!</h3>
                   <p className="text-base text-slate-600 font-sans font-normal leading-relaxed">
@@ -246,16 +246,16 @@ export const Registration: React.FC = () => {
                 </div>
 
                 <div className="pt-4 flex flex-col sm:flex-row gap-3.5 justify-center">
-                  <a 
-                    href="https://nexasoul.vercel.app/register" 
-                    target="_blank" 
+                  <a
+                    href="https://nexasoul.vercel.app/register"
+                    target="_blank"
                     rel="noreferrer"
                     className="h-13 px-8 rounded-xl bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-sans font-semibold text-sm sm:text-base hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 shadow-[0_12px_24px_rgba(99,102,241,0.25)] hover:shadow-[0_16px_32px_rgba(99,102,241,0.35)]"
                   >
                     <span>Join Official Club Portal</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
-                  
+
                   <button
                     onClick={handleReset}
                     className="h-13 px-6 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-sans font-semibold text-sm sm:text-base transition-all flex items-center justify-center gap-2 border border-slate-250 cursor-pointer"
@@ -267,16 +267,16 @@ export const Registration: React.FC = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-25">
-                
+
                 {/* Left Column: Context, Community Stats, Developer Visuals */}
                 <div className="lg:col-span-5 space-y-6 text-left">
                   <div className="space-y-4">
                     <SectionBadge title="ORIENTATION 2026" icon={Sparkles} accentColor="indigo" />
-                    
+
                     <h3 className="text-3xl sm:text-4xl font-sora font-bold text-slate-900 tracking-tight leading-none">
                       Ready to Start Your Journey?
                     </h3>
-                    
+
                     <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-sans font-normal">
                       Become part of Chandigarh University's premium development club. Learn core industry pipelines, coordinate production software, and design bespoke portfolios.
                     </p>
@@ -297,14 +297,14 @@ export const Registration: React.FC = () => {
 
                 {/* Right Column: Interactive Registration Form */}
                 <form onSubmit={handleRegister} className="lg:col-span-7 bg-slate-100/40 border border-slate-200/50 p-6 sm:p-8 rounded-2xl space-y-5 text-left backdrop-blur-sm">
-                  
+
                   {/* Full Name Input */}
                   <div className="space-y-1.5">
                     <label className="text-[11px] font-sans font-semibold text-slate-550 uppercase tracking-widest">
                       Full Name*
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
@@ -324,8 +324,8 @@ export const Registration: React.FC = () => {
                     <label className="text-[11px] font-sans font-semibold text-slate-550 uppercase tracking-widest">
                       University UID*
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="uid"
                       value={formData.uid}
                       onChange={handleInputChange}
@@ -345,8 +345,8 @@ export const Registration: React.FC = () => {
                     <label className="text-[11px] font-sans font-semibold text-slate-550 uppercase tracking-widest">
                       Department Name*
                     </label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="department"
                       value={formData.department}
                       onChange={handleInputChange}
@@ -366,8 +366,8 @@ export const Registration: React.FC = () => {
                     <label className="text-[11px] font-sans font-semibold text-slate-550 uppercase tracking-widest">
                       Mobile Number*
                     </label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       name="mobile"
                       value={formData.mobile}
                       onChange={handleInputChange}
@@ -387,8 +387,8 @@ export const Registration: React.FC = () => {
                     <label className="text-[11px] font-sans font-semibold text-slate-550 uppercase tracking-widest">
                       Email ID*
                     </label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
@@ -413,9 +413,9 @@ export const Registration: React.FC = () => {
 
                   {/* Multi-action Interactive Buttons Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3">
-                    
+
                     {/* Primary Submit: Register with strong gradient */}
-                    <button 
+                    <button
                       type="submit"
                       disabled={isSubmitting}
                       className="h-13 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-sans font-semibold text-sm sm:text-[0.95rem] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(99,102,241,0.3)] transition-all flex items-center justify-center gap-2 group cursor-pointer border-0 shadow-md"
@@ -425,7 +425,7 @@ export const Registration: React.FC = () => {
                     </button>
 
                     {/* Secondary Submit: Join Club with premium glass outlined style */}
-                    <button 
+                    <button
                       type="button"
                       onClick={handleJoinMembership}
                       disabled={isSubmitting}
