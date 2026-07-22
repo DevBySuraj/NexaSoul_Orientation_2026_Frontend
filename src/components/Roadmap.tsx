@@ -7,17 +7,17 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ROADMAP_STAGES } from '../lib/data';
 import { SectionHeading } from './common/SectionHeading';
-import { 
-  Laptop, 
-  Activity, 
-  Database, 
-  Globe, 
-  Lock, 
-  Cpu, 
-  Server, 
-  Sparkles, 
-  Award, 
-  Terminal, 
+import {
+  Laptop,
+  Activity,
+  Database,
+  Globe,
+  Lock,
+  Cpu,
+  Server,
+  Sparkles,
+  Award,
+  Terminal,
   CheckCircle2
 } from 'lucide-react';
 
@@ -187,10 +187,10 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
   return (
     <div className="relative p-[1.5px] rounded-[32px] bg-gradient-to-r from-slate-900/10 via-indigo-500/10 to-pink-500/10 shadow-[0_24px_60px_rgba(99,102,241,0.04)] w-full">
       <div className="bg-gradient-to-b from-white/99 via-slate-50/50 to-white/99 backdrop-blur-xl rounded-[30px] p-5 sm:p-7 md:p-8 relative overflow-hidden min-h-[380px] md:min-h-[295px] lg:min-h-[275px]">
-        
+
         {/* Soft visual lighting backdrop */}
         <div className="absolute -right-24 -top-24 w-80 h-80 bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none" />
-        
+
         {/* Gentle thin glass reflection */}
         <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/80 to-transparent z-10" />
 
@@ -210,11 +210,11 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
                   {stage.badge}
                 </span>
               </div>
-              
+
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-sora font-bold text-slate-900 tracking-tight leading-tight">
                 {stage.title}
               </h3>
-              
+
               <p className="text-base sm:text-lg md:text-xl text-slate-650 font-sans font-normal leading-relaxed max-w-4xl">
                 {stage.description}
               </p>
@@ -222,10 +222,10 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
 
             {/* Clean grid with less text, less boxes, maximum spacing */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-slate-100">
-              
+
               {/* Left col: Tech, skills, and projects */}
               <div className="space-y-4">
-                
+
                 {/* Technologies learned */}
                 <div className="space-y-2">
                   <span className="text-xs sm:text-sm font-sans font-semibold uppercase text-slate-400 tracking-widest block">
@@ -233,7 +233,7 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {stage.techChips.map((chip) => (
-                      <span 
+                      <span
                         key={chip}
                         className="text-sm font-sans font-semibold text-slate-800 bg-white border border-slate-200/80 px-3 py-1.5 rounded-lg shadow-sm"
                       >
@@ -241,7 +241,7 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
                       </span>
                     ))}
                     {stage.skills.map((skill) => (
-                      <span 
+                      <span
                         key={skill}
                         className="text-sm font-sans font-semibold text-indigo-600 bg-indigo-50/50 border border-indigo-100 px-3 py-1.5 rounded-lg"
                       >
@@ -272,7 +272,7 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
 
               {/* Right col: Outcomes & Career Value */}
               <div className="space-y-4 md:border-l md:border-slate-100 md:pl-8">
-                
+
                 {/* Outcomes list */}
                 <div className="space-y-2">
                   <span className="text-xs sm:text-sm font-sans font-semibold uppercase text-slate-400 tracking-widest block">
@@ -318,6 +318,8 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
   );
 };
 
+import { ScrollReveal } from './common/ScrollReveal';
+
 export const Roadmap: React.FC = () => {
   const [selectedStage, setSelectedStage] = useState(0);
 
@@ -329,105 +331,105 @@ export const Roadmap: React.FC = () => {
 
   return (
     <section id="roadmap" className="py-10 md:py-14 bg-transparent relative overflow-hidden">
-      
-      {/* Background ambient gradient lighting for depth */}
-      <div className="absolute top-[15%] left-[5%] w-96 h-96 rounded-full bg-blue-500/[0.015] blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[20%] right-[5%] w-[450px] h-[450px] rounded-full bg-indigo-500/[0.015] blur-3xl pointer-events-none" />
-      <div className="absolute top-[50%] left-[30%] w-80 h-80 rounded-full bg-emerald-500/[0.01] blur-3xl pointer-events-none" />
+      {/* Ambient decorative blur background elements */}
+      <div className="absolute top-[10%] right-[5%] w-96 h-96 rounded-full bg-purple-500/[0.015] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[5%] w-96 h-96 rounded-full bg-blue-500/[0.015] blur-3xl pointer-events-none" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <SectionHeading 
-          badge="Learning Architecture"
+          badge="ORIENTATION HUB TIMELINE"
           title={
             <>
-              The Developer{' '}
+              Oriented{' '}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-emerald-500 font-extrabold font-sans">
                 Roadmap
               </span>
             </>
           }
-          subtitle="An interactive progression timeline designed to scale your technical capability from standard syntax loops into complex production cloud architectures."
+          subtitle="Explore our comprehensive 4-stage developer onboarding process for Chandigarh University engineers."
           className="mb-6 sm:mb-8"
         />
 
         {/* Horizontal Progress Timeline */}
-        <div className="relative w-full mb-6 sm:mb-8">
-          
-          {/* Horizontal Track line behind buttons */}
-          <div className="absolute top-[34px] left-[10%] right-[10%] h-[2px] bg-slate-200/80 z-0 hidden md:block">
-            <div 
-              className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 h-full rounded-full transition-all duration-700 ease-out"
-              style={{ width: `${(selectedStage / (ENRICHED_STAGES.length - 1)) * 100}%` }}
-            />
-          </div>
+        <ScrollReveal delay={0.1}>
+          <div className="relative w-full mb-6 sm:mb-8">
+            
+            {/* Horizontal Track line behind buttons */}
+            <div className="absolute top-[34px] left-[10%] right-[10%] h-[2px] bg-slate-200/80 z-0 hidden md:block">
+              <div 
+                className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600 h-full rounded-full transition-all duration-700 ease-out"
+                style={{ width: `${(selectedStage / (ENRICHED_STAGES.length - 1)) * 100}%` }}
+              />
+            </div>
 
-          {/* Horizon Stages Scrollable List */}
-          <div className="flex items-start md:justify-between gap-4 overflow-x-auto pb-4 pt-2 px-2 scrollbar-none snap-x relative z-10">
-            {ENRICHED_STAGES.map((stage, idx) => {
-              const isSelected = selectedStage === idx;
-              const [coords, setCoords] = useState({ x: 0, y: 0 });
+            {/* Horizon Stages Scrollable List */}
+            <div className="flex items-start md:justify-between gap-4 overflow-x-auto pb-4 pt-2 px-2 scrollbar-none snap-x relative z-10">
+              {ENRICHED_STAGES.map((stage, idx) => {
+                const isSelected = selectedStage === idx;
+                const [coords, setCoords] = useState({ x: 0, y: 0 });
 
-              const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-              };
+                const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+                };
 
-              return (
-                <button
-                  key={stage.number}
-                  onClick={() => setSelectedStage(idx)}
-                  onMouseMove={handleMouseMove}
-                  className={`flex-1 min-w-[200px] md:min-w-0 text-center flex flex-col items-center justify-start gap-2.5 p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group min-h-[135px] sm:min-h-[145px] ${
-                    isSelected
-                      ? 'bg-gradient-to-br from-indigo-600 via-indigo-600 to-purple-600 border-indigo-600 text-white shadow-lg shadow-indigo-500/20 scale-105'
-                      : 'bg-white border-slate-200/50 text-slate-700 hover:border-slate-300 hover:-translate-y-1'
-                  }`}
-                >
-                  {/* Spotlight circle glow behind inactive tabs */}
-                  {!isSelected && (
-                    <div 
-                      className="absolute -inset-px rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
-                      style={{
-                        background: `radial-gradient(100px circle at ${coords.x}px ${coords.y}px, ${getAccentColorGlow(stage.accentColor)}, transparent 55%)`,
-                      }}
-                    />
-                  )}
+                return (
+                  <button
+                    key={stage.number}
+                    onClick={() => setSelectedStage(idx)}
+                    onMouseMove={handleMouseMove}
+                    className={`flex-1 min-w-[200px] md:min-w-0 text-center flex flex-col items-center justify-start gap-2.5 p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group min-h-[135px] sm:min-h-[145px] ${
+                      isSelected
+                        ? 'bg-gradient-to-br from-indigo-600 via-indigo-600 to-purple-600 border-indigo-600 text-white shadow-lg shadow-indigo-500/20 scale-105'
+                        : 'bg-white border-slate-200/50 text-slate-700 hover:border-slate-300 hover:-translate-y-1'
+                    }`}
+                  >
+                    {/* Spotlight circle glow behind inactive tabs */}
+                    {!isSelected && (
+                      <div 
+                        className="absolute -inset-px rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+                        style={{
+                          background: `radial-gradient(100px circle at ${coords.x}px ${coords.y}px, ${getAccentColorGlow(stage.accentColor)}, transparent 55%)`,
+                        }}
+                      />
+                    )}
 
-                  {/* Active node glow indicator */}
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-mono text-sm font-black border relative z-10 transition-all ${
-                    isSelected
-                      ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.5)] scale-110'
-                      : 'bg-slate-50 text-slate-400 border-slate-200/60'
-                  }`}>
-                    {stage.number}
-                  </div>
-
-                  {/* Stage titles details */}
-                  <div className="space-y-1 relative z-10">
-                    <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest block ${
-                      isSelected ? 'text-amber-300' : 'text-indigo-600'
+                    {/* Active node glow indicator */}
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-mono text-sm font-black border relative z-10 transition-all ${
+                      isSelected
+                        ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.5)] scale-110'
+                        : 'bg-slate-50 text-slate-400 border-slate-200/60'
                     }`}>
-                      {stage.stage}
-                    </span>
-                    <strong className={`text-xs sm:text-sm font-sans font-semibold tracking-tight leading-tight block ${
-                      isSelected ? 'text-white' : 'text-slate-800 group-hover:text-indigo-600'
-                    }`}>
-                      {stage.title}
-                    </strong>
-                  </div>
+                      {stage.number}
+                    </div>
 
-                </button>
-              );
-            })}
+                    {/* Stage titles details */}
+                    <div className="space-y-1 relative z-10">
+                      <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest block ${
+                        isSelected ? 'text-amber-300' : 'text-indigo-600'
+                      }`}>
+                        {stage.stage}
+                      </span>
+                      <strong className={`text-xs sm:text-sm font-sans font-semibold tracking-tight leading-tight block ${
+                        isSelected ? 'text-white' : 'text-slate-800 group-hover:text-indigo-600'
+                      }`}>
+                        {stage.title}
+                      </strong>
+                    </div>
+
+                  </button>
+                );
+              })}
+            </div>
+
           </div>
-
-        </div>
+        </ScrollReveal>
 
         {/* Dynamic Detail Card aligned directly beneath horizontal steps */}
-        <div className="w-full">
+        <ScrollReveal delay={0.2} className="w-full">
           <StageDetailCard stage={ENRICHED_STAGES[selectedStage]} />
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

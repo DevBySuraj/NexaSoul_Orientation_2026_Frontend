@@ -4,12 +4,13 @@
  */
 
 import React, { useState, useRef } from 'react';
-import { 
+import {
   Users,
   ArrowRight
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { SectionBadge } from './common/SectionBadge';
+import { ScrollReveal } from './common/ScrollReveal';
 
 // Illustration for Bento Card A (3D Isometric Cubes)
 const IsometricCubes: React.FC<{ className?: string }> = ({ className = "w-20 h-20 sm:w-24 sm:h-24" }) => (
@@ -234,7 +235,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ title, description, skills, gradi
             <p className="text-base sm:text-lg text-slate-600 font-sans font-normal leading-relaxed">
               {description}
             </p>
-            
+
             {/* Skills tags list */}
             <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-200/40 mt-6 w-fit">
               {skills.map((skill, idx) => (
@@ -244,7 +245,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ title, description, skills, gradi
               ))}
             </div>
           </div>
-          
+
           {/* Relative visual illustration positioned cleanly to prevent any overlapping */}
           <div className="shrink-0 flex items-center justify-center p-2 relative z-0 h-28 sm:h-36 md:h-auto group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
             {React.cloneElement(illustration, { className: "w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40" })}
@@ -261,7 +262,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ title, description, skills, gradi
               {description}
             </p>
           </div>
-          
+
           {/* Bottom Row containing tags on the left, non-overlapping illustration on the right */}
           <div className="flex flex-row items-end justify-between gap-4 mt-auto pt-4 border-t border-slate-200/40">
             {/* Skills tags list */}
@@ -287,7 +288,7 @@ const BentoCard: React.FC<BentoCardProps> = ({ title, description, skills, gradi
 export const About: React.FC = () => {
   return (
     <section id="about" className="py-14 md:py-16 lg:py-20 relative overflow-hidden bg-transparent">
-      
+
       {/* Top Section Divider Line */}
       <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent">
         <div className="absolute left-1/2 -translate-x-1/2 top-0 h-[2px] w-64 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 blur-[0.5px]" />
@@ -319,10 +320,10 @@ export const About: React.FC = () => {
       </motion.div>
 
       <div className="max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1480px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* CENTERED HEADER BLOCK */}
         <div className="max-w-3xl mx-auto text-center flex flex-col items-center mb-16 sm:mb-20">
-          
+
           {/* Mission Badge */}
           <SectionBadge title="THE CLUB MISSION" icon={Users} accentColor="purple" className="mb-6" />
 
@@ -361,7 +362,7 @@ export const About: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           
           {/* Card 1: Project-First Learning (Wide on desktop/tablet) */}
-          <div className="lg:col-span-2 md:col-span-2">
+          <ScrollReveal delay={0.05} className="lg:col-span-2 md:col-span-2">
             <BentoCard
               title="Project-First Learning"
               description="Construct production-grade web products that solve real-world problems. Master agile cycles, PR workflows, and persistent state."
@@ -370,10 +371,10 @@ export const About: React.FC = () => {
               illustration={<IsometricCubes />}
               isWide={true}
             />
-          </div>
+          </ScrollReveal>
 
           {/* Card 2: Frontend + Full Stack */}
-          <div className="lg:col-span-1 md:col-span-1">
+          <ScrollReveal delay={0.1} className="lg:col-span-1 md:col-span-1">
             <BentoCard
               title="Frontend + Full Stack"
               description="From responsive interfaces to secure server gateways, write unified type-safe code architectures."
@@ -381,10 +382,10 @@ export const About: React.FC = () => {
               gradientType="orange"
               illustration={<CodeEditorIllustration />}
             />
-          </div>
+          </ScrollReveal>
 
           {/* Card 3: Real Product Development */}
-          <div className="lg:col-span-1 md:col-span-1">
+          <ScrollReveal delay={0.15} className="lg:col-span-1 md:col-span-1">
             <BentoCard
               title="Real Product Development"
               description="Learn production optimization, fast runtime rendering, and robust server deployments."
@@ -392,10 +393,10 @@ export const About: React.FC = () => {
               gradientType="green"
               illustration={<GlobeIllustration />}
             />
-          </div>
+          </ScrollReveal>
 
           {/* Card 4: Industry Sprint Cycles (Wide on desktop/tablet) */}
-          <div className="lg:col-span-2 md:col-span-2">
+          <ScrollReveal delay={0.2} className="lg:col-span-2 md:col-span-2">
             <BentoCard
               title="Industry Sprint Cycles"
               description="Acquire battle-tested workflows used at Apple, Stripe, and Linear. Perfect your code reviews, standups, and documentation."
@@ -404,10 +405,10 @@ export const About: React.FC = () => {
               illustration={<SprintLoopIllustration />}
               isWide={true}
             />
-          </div>
+          </ScrollReveal>
 
           {/* Card 5: Portfolio Mastery */}
-          <div className="lg:col-span-1 md:col-span-1">
+          <ScrollReveal delay={0.25} className="lg:col-span-1 md:col-span-1">
             <BentoCard
               title="Portfolio Mastery"
               description="Architect digital proof-of-work pages that capture interest from recruiters and venture builders globally."
@@ -415,10 +416,10 @@ export const About: React.FC = () => {
               gradientType="orange"
               illustration={<PortfolioIllustration />}
             />
-          </div>
+          </ScrollReveal>
 
           {/* Card 6: Expert Mentorship */}
-          <div className="lg:col-span-1 md:col-span-1">
+          <ScrollReveal delay={0.3} className="lg:col-span-1 md:col-span-1">
             <BentoCard
               title="Expert Mentorship"
               description="Receive direct, unvarnished guidance from senior engineers and open-source core maintainers."
@@ -426,10 +427,10 @@ export const About: React.FC = () => {
               gradientType="teal"
               illustration={<MentorshipIllustration />}
             />
-          </div>
+          </ScrollReveal>
 
           {/* Card 7: Hackathon Preparation (Wide on tablet, Standard on desktop) */}
-          <div className="lg:col-span-1 md:col-span-2">
+          <ScrollReveal delay={0.35} className="lg:col-span-1 md:col-span-2">
             <BentoCard
               title="Hackathon Preparation"
               description="Form rapid-development teams, build prototypes in 36 hours, and master the art of winning product pitches."
@@ -438,7 +439,7 @@ export const About: React.FC = () => {
               illustration={<TrophyIllustration />}
               isWide={true}
             />
-          </div>
+          </ScrollReveal>
 
         </div>
 

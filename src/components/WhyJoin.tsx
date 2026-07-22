@@ -5,16 +5,16 @@
 
 import React, { useState, useRef } from 'react';
 import { SectionHeading } from './common/SectionHeading';
-import { 
-  GraduationCap, 
-  Trophy, 
-  Github, 
-  Users, 
-  Briefcase, 
-  Cloud, 
-  ShieldCheck, 
-  GitBranch, 
-  Crown, 
+import {
+  GraduationCap,
+  Trophy,
+  Github,
+  Users,
+  Briefcase,
+  Cloud,
+  ShieldCheck,
+  GitBranch,
+  Crown,
   Rocket,
   ArrowUpRight
 } from 'lucide-react';
@@ -178,7 +178,7 @@ const InteractiveCard: React.FC<{ card: BenefitCard }> = ({ card }) => {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    
+
     // Spotlight coords
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -212,13 +212,13 @@ const InteractiveCard: React.FC<{ card: BenefitCard }> = ({ card }) => {
     >
       {/* Outer gradient border wrapper */}
       <div className="h-full p-[1.5px] rounded-[24px] bg-gradient-to-r from-blue-500/20 via-orange-500/20 to-emerald-500/20 group-hover:from-blue-500 group-hover:via-orange-500 group-hover:to-emerald-500 transition-all duration-500 shadow-[0_4px_20px_rgba(0,0,0,0.01)] group-hover:shadow-[0_20px_40px_rgba(99,102,241,0.06)] group-hover:-translate-y-2 transition-all duration-300">
-        
+
         {/* Inner white glass content card */}
         <div
           className="relative rounded-[22.5px] bg-white/90 backdrop-blur-md p-4 flex flex-col justify-between overflow-hidden text-left h-full"
         >
           {/* 1. Spotlight Mouse Overlay */}
-          <div 
+          <div
             className="absolute -inset-px rounded-[22.5px] pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100 z-10"
             style={{
               background: `radial-gradient(130px circle at ${coords.x}px ${coords.y}px, ${style.spotlight}, transparent 55%)`,
@@ -226,7 +226,7 @@ const InteractiveCard: React.FC<{ card: BenefitCard }> = ({ card }) => {
           />
 
           {/* 2. Soft Ambient Bottom Right Glow */}
-          <div 
+          <div
             className="absolute -right-10 -bottom-10 w-24 h-24 rounded-full pointer-events-none blur-2xl transition-all duration-500 opacity-20 group-hover:opacity-100 z-0"
             style={{ backgroundColor: style.glow }}
           />
@@ -236,7 +236,7 @@ const InteractiveCard: React.FC<{ card: BenefitCard }> = ({ card }) => {
 
           {/* Card Body Content */}
           <div className="space-y-4 relative z-20 flex-grow flex flex-col justify-between">
-            
+
             {/* Top bar with tiny badges */}
             <div className="flex items-center justify-between">
               <span className={`px-2 py-0.5 text-[10px] font-mono font-black uppercase tracking-wider rounded-md border shadow-2xs ${style.badge}`}>
@@ -279,18 +279,20 @@ const InteractiveCard: React.FC<{ card: BenefitCard }> = ({ card }) => {
   );
 };
 
+import { ScrollReveal } from './common/ScrollReveal';
+
 export const WhyJoin: React.FC = () => {
   return (
     <section id="why-join" className="py-10 md:py-12 bg-transparent relative overflow-hidden">
-      
+
       {/* Decorative ambient blurred blobs behind grid */}
       <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-200/15 blur-[120px] pointer-events-none z-0" />
       <div className="absolute bottom-[20%] right-[-10%] w-[500px] h-[500px] rounded-full bg-emerald-200/10 blur-[130px] pointer-events-none z-0" />
       <div className="absolute top-[50%] left-[40%] w-[400px] h-[400px] rounded-full bg-orange-200/10 blur-[120px] pointer-events-none z-0" />
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8 xl:px-12 relative z-10">
-        
-        <SectionHeading 
+
+        <SectionHeading
           badge="EXCLUSIVE MEMBERSHIP"
           title={
             <>
@@ -306,8 +308,10 @@ export const WhyJoin: React.FC = () => {
 
         {/* Bento Grid: 5 columns on desktop (xl), 3 columns on tablet (md), 2 columns on small screens, stacked on mobile */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4.5 sm:gap-5 items-stretch">
-          {BENEFITS.map((benefit) => (
-            <InteractiveCard key={benefit.id} card={benefit} />
+          {BENEFITS.map((benefit, idx) => (
+            <ScrollReveal key={benefit.id} delay={idx * 0.05} className="h-full">
+              <InteractiveCard card={benefit} />
+            </ScrollReveal>
           ))}
         </div>
 

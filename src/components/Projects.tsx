@@ -6,10 +6,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SectionHeading } from './common/SectionHeading';
-import { 
-  Clock, 
-  Sparkles, 
-  CheckCircle2, 
+import {
+  Clock,
+  Sparkles,
+  CheckCircle2,
   Trophy,
   Terminal,
   Laptop,
@@ -180,7 +180,7 @@ const ProjectDetailCard: React.FC<ProjectDetailCardProps> = ({ project }) => {
   return (
     <div className="relative p-[1.5px] rounded-[32px] bg-gradient-to-r from-slate-900/10 via-indigo-500/10 to-pink-500/10 shadow-[0_24px_60px_rgba(99,102,241,0.04)] w-full">
       <div className="bg-gradient-to-b from-white/99 via-slate-50/50 to-white/99 backdrop-blur-xl rounded-[30px] p-5 sm:p-8 md:p-10 relative overflow-hidden text-left min-h-[480px] sm:min-h-[400px] md:min-h-[330px] lg:min-h-[310px]">
-        
+
         {/* Soft atmospheric gradient lighting */}
         <div className={`absolute -right-24 -top-24 w-80 h-80 bg-gradient-to-br ${theme.glowColor} rounded-full blur-3xl opacity-55 pointer-events-none`} />
 
@@ -205,7 +205,7 @@ const ProjectDetailCard: React.FC<ProjectDetailCardProps> = ({ project }) => {
                 {getProjectIcon(project.id, theme.accent)}
                 <span>{project.title}</span>
               </h3>
-              
+
               <p className="text-lg sm:text-xl md:text-2xl text-slate-650 font-sans font-normal leading-relaxed max-w-4xl pt-0.5">
                 {project.desc}
               </p>
@@ -213,7 +213,7 @@ const ProjectDetailCard: React.FC<ProjectDetailCardProps> = ({ project }) => {
 
             {/* Clean Horizontal Grid to Reduce Vertical Empty Space */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
-              
+
               {/* Left Column: Outcome and difficulty */}
               <div className="space-y-4">
                 {/* Core outcome */}
@@ -257,7 +257,7 @@ const ProjectDetailCard: React.FC<ProjectDetailCardProps> = ({ project }) => {
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech) => (
-                      <span 
+                      <span
                         key={tech}
                         className="text-sm font-sans font-semibold text-slate-800 bg-white border border-slate-200 px-3 py-1.5 rounded-lg shadow-sm"
                       >
@@ -294,6 +294,8 @@ const ProjectDetailCard: React.FC<ProjectDetailCardProps> = ({ project }) => {
   );
 };
 
+import { ScrollReveal } from './common/ScrollReveal';
+
 export const Projects: React.FC = () => {
   const [activeProject, setActiveProject] = useState(0);
 
@@ -305,8 +307,8 @@ export const Projects: React.FC = () => {
       <div className="absolute top-[45%] left-[40%] w-80 h-80 rounded-full bg-emerald-500/[0.01] blur-3xl pointer-events-none" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <SectionHeading 
+
+        <SectionHeading
           badge="Product Craftsmanship"
           title={
             <>
@@ -325,94 +327,91 @@ export const Projects: React.FC = () => {
         />
 
         {/* Horizontal Progress Timeline */}
-        <div className="relative w-full mb-6 sm:mb-8">
-          
-          {/* Horizontal Track line behind buttons */}
-          <div className="absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-slate-200/80 z-0 hidden md:block">
-            <div 
-              className="bg-gradient-to-r from-blue-500 via-indigo-500 via-pink-500 to-purple-600 h-full rounded-full transition-all duration-700 ease-out"
-              style={{ width: `${(activeProject / (PROJECTS_DATA.length - 1)) * 100}%` }}
-            />
-          </div>
+        <ScrollReveal delay={0.1}>
+          <div className="relative w-full mb-6 sm:mb-8">
 
-          {/* Stepper horizontal list */}
-          <div className="flex items-start md:justify-between gap-4 overflow-x-auto pb-4 pt-2 px-2 scrollbar-none snap-x relative z-10">
-            {PROJECTS_DATA.map((project, idx) => {
-              const isActive = idx === activeProject;
-              const projectTheme = THEME_CLASSES[project.colorTheme];
-              const [coords, setCoords] = useState({ x: 0, y: 0 });
+            {/* Horizontal Track line behind buttons */}
+            <div className="absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-slate-200/80 z-0 hidden md:block">
+              <div
+                className="bg-gradient-to-r from-blue-500 via-indigo-500 via-pink-500 to-purple-600 h-full rounded-full transition-all duration-700 ease-out"
+                style={{ width: `${(activeProject / (PROJECTS_DATA.length - 1)) * 100}%` }}
+              />
+            </div>
 
-              const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-              };
+            {/* Stepper horizontal list */}
+            <div className="flex items-start md:justify-between gap-4 overflow-x-auto pb-4 pt-2 px-2 scrollbar-none snap-x relative z-10">
+              {PROJECTS_DATA.map((project, idx) => {
+                const isActive = idx === activeProject;
+                const projectTheme = THEME_CLASSES[project.colorTheme];
+                const [coords, setCoords] = useState({ x: 0, y: 0 });
 
-              return (
-                <button
-                  key={project.id}
-                  onClick={() => setActiveProject(idx)}
-                  onMouseMove={handleMouseMove}
-                  className={`flex-1 min-w-[180px] md:min-w-0 text-center flex flex-col items-center justify-between gap-2.5 p-3 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group min-h-[145px] sm:min-h-[155px] ${
-                    isActive
+                const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+                };
+
+                return (
+                  <button
+                    key={project.id}
+                    onClick={() => setActiveProject(idx)}
+                    onMouseMove={handleMouseMove}
+                    className={`flex-1 min-w-[180px] md:min-w-0 text-center flex flex-col items-center justify-between gap-2.5 p-3 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group min-h-[145px] sm:min-h-[155px] ${isActive
                       ? 'bg-gradient-to-br from-slate-900 to-slate-950 border-slate-900 text-white shadow-xl shadow-slate-900/10 scale-105'
                       : 'bg-white border-slate-200/50 text-slate-700 hover:border-slate-300 hover:-translate-y-1'
-                  }`}
-                >
-                  {/* Spotlight hover effect */}
-                  {!isActive && (
-                    <div 
-                      className="absolute -inset-px rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
-                      style={{
-                        background: `radial-gradient(100px circle at ${coords.x}px ${coords.y}px, ${getAccentColorGlow(project.colorTheme)}, transparent 55%)`,
-                      }}
-                    />
-                  )}
+                    }`}
+                  >
+                    {/* Spotlight hover effect */}
+                    {!isActive && (
+                      <div
+                        className="absolute -inset-px rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+                        style={{
+                          background: `radial-gradient(100px circle at ${coords.x}px ${coords.y}px, ${getAccentColorGlow(project.colorTheme)}, transparent 55%)`,
+                        }}
+                      />
+                    )}
 
-                  {/* Icon Node circle */}
-                  <div className={`w-9 h-9 rounded-full flex items-center justify-center relative z-10 transition-all border ${
-                    isActive
+                    {/* Icon Node circle */}
+                    <div className={`w-9 h-9 rounded-full flex items-center justify-center relative z-10 transition-all border ${isActive
                       ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.5)] scale-110'
                       : 'bg-slate-50 text-slate-400 border-slate-200/60'
-                  }`}>
-                    {getProjectIcon(project.id, isActive ? 'text-slate-950' : projectTheme.accent)}
-                  </div>
-
-                  {/* Label & project title details */}
-                  <div className="space-y-0.5 relative z-10">
-                    <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest block ${
-                      isActive ? 'text-amber-300' : projectTheme.accent
                     }`}>
-                      Node {project.number}
-                    </span>
-                    <strong className={`text-xs sm:text-sm font-sans font-semibold tracking-tight leading-tight block ${
-                      isActive ? 'text-white' : 'text-slate-800 group-hover:text-slate-900'
-                    }`}>
-                      {project.title}
-                    </strong>
-                  </div>
+                      {getProjectIcon(project.id, isActive ? 'text-slate-950' : projectTheme.accent)}
+                    </div>
 
-                  {/* Minimal status tag */}
-                  <div className="relative z-10">
-                    <span className={`text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded ${
-                      isActive
+                    {/* Label & project title details */}
+                    <div className="space-y-0.5 relative z-10">
+                      <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest block ${isActive ? 'text-amber-300' : projectTheme.accent
+                      }`}>
+                        Node {project.number}
+                      </span>
+                      <strong className={`text-xs sm:text-sm font-sans font-semibold tracking-tight leading-tight block ${isActive ? 'text-white' : 'text-slate-800 group-hover:text-slate-900'
+                      }`}>
+                        {project.title}
+                      </strong>
+                    </div>
+
+                    {/* Minimal status tag */}
+                    <div className="relative z-10">
+                      <span className={`text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded ${isActive
                         ? 'bg-white/10 text-white'
                         : 'bg-slate-50 text-slate-400'
-                    }`}>
-                      {project.difficulty}
-                    </span>
-                  </div>
+                      }`}>
+                        {project.difficulty}
+                      </span>
+                    </div>
 
-                </button>
-              );
-            })}
+                  </button>
+                );
+              })}
+            </div>
+
           </div>
-
-        </div>
+        </ScrollReveal>
 
         {/* Output Flash Card - Centered Directly Below */}
-        <div className="w-full">
+        <ScrollReveal delay={0.2} className="w-full">
           <ProjectDetailCard project={PROJECTS_DATA[activeProject]} />
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

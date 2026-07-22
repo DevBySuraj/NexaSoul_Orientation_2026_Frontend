@@ -6,9 +6,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SectionHeading } from './common/SectionHeading';
-import { 
-  Sparkles, 
-  CheckCircle2, 
+import { ScrollReveal } from './common/ScrollReveal';
+import {
+  Sparkles,
+  CheckCircle2,
   Trophy
 } from 'lucide-react';
 
@@ -189,15 +190,14 @@ export const Journey: React.FC = () => {
 
   return (
     <section id="journey" className="py-10 md:py-14 bg-transparent relative overflow-hidden">
-      
-      {/* Dynamic atmospheric subtle glow elements */}
-      <div className="absolute top-[10%] right-[10%] w-96 h-96 rounded-full bg-indigo-500/[0.012] blur-3xl pointer-events-none" />
-      <div className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] rounded-full bg-pink-500/[0.012] blur-3xl pointer-events-none" />
+      {/* Background ambient lighting */}
+      <div className="absolute top-[10%] left-[5%] w-[450px] h-[450px] rounded-full bg-blue-500/[0.015] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-[10%] right-[5%] w-[450px] h-[450px] rounded-full bg-emerald-500/[0.015] blur-3xl pointer-events-none" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <SectionHeading 
-          badge="Growth Progression"
+
+        <SectionHeading
+          badge="STUDENT TRANSFORMATIONAL PATHWAY"
           title={
             <>
               From{' '}
@@ -215,97 +215,94 @@ export const Journey: React.FC = () => {
         />
 
         {/* Horizontal Progress Timeline */}
-        <div className="relative w-full mb-6 sm:mb-8">
-          
-          {/* Horizontal Track line behind buttons */}
-          <div className="absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-slate-200/80 z-0 hidden md:block">
-            <div 
-              className="bg-gradient-to-r from-blue-500 via-indigo-500 via-pink-500 to-purple-600 h-full rounded-full transition-all duration-700 ease-out"
-              style={{ width: `${(activeStep / (STAGE_DETAILS.length - 1)) * 100}%` }}
-            />
-          </div>
+        <ScrollReveal delay={0.1}>
+          <div className="relative w-full mb-6 sm:mb-8">
 
-          {/* Stepper horizontal list */}
-          <div className="flex items-start md:justify-between gap-4 overflow-x-auto pb-4 pt-2 px-2 scrollbar-none snap-x relative z-10">
-            {STAGE_DETAILS.map((step, idx) => {
-              const isCompleted = idx < activeStep;
-              const isActive = idx === activeStep;
-              const stepTheme = THEME_CLASSES[step.colorTheme];
-              const [coords, setCoords] = useState({ x: 0, y: 0 });
+            {/* Horizontal Track line behind buttons */}
+            <div className="absolute top-[34px] left-[8%] right-[8%] h-[2px] bg-slate-200/80 z-0 hidden md:block">
+              <div
+                className="bg-gradient-to-r from-blue-500 via-indigo-500 via-pink-500 to-purple-600 h-full rounded-full transition-all duration-700 ease-out"
+                style={{ width: `${(activeStep / (STAGE_DETAILS.length - 1)) * 100}%` }}
+              />
+            </div>
 
-              const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-              };
+            {/* Stepper horizontal list */}
+            <div className="flex items-start md:justify-between gap-4 overflow-x-auto pb-4 pt-2 px-2 scrollbar-none snap-x relative z-10">
+              {STAGE_DETAILS.map((step, idx) => {
+                const isCompleted = idx < activeStep;
+                const isActive = idx === activeStep;
+                const stepTheme = THEME_CLASSES[step.colorTheme];
+                const [coords, setCoords] = useState({ x: 0, y: 0 });
 
-              return (
-                <button
-                  key={step.id}
-                  onClick={() => setActiveStep(idx)}
-                  onMouseMove={handleMouseMove}
-                  className={`flex-1 min-w-[180px] md:min-w-0 text-center flex flex-col items-center gap-2 p-3 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group ${
-                    isActive
+                const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  setCoords({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+                };
+
+                return (
+                  <button
+                    key={step.id}
+                    onClick={() => setActiveStep(idx)}
+                    onMouseMove={handleMouseMove}
+                    className={`flex-1 min-w-[180px] md:min-w-0 text-center flex flex-col items-center gap-2 p-3 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group ${isActive
                       ? 'bg-gradient-to-br from-slate-900 to-slate-950 border-slate-900 text-white shadow-xl shadow-slate-900/10 scale-105'
                       : 'bg-white border-slate-200/50 text-slate-700 hover:border-slate-300 hover:-translate-y-1'
-                  }`}
-                >
-                  {/* Spotlight hover effect */}
-                  {!isActive && (
-                    <div 
-                      className="absolute -inset-px rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
-                      style={{
-                        background: `radial-gradient(100px circle at ${coords.x}px ${coords.y}px, ${getAccentColorGlow(step.colorTheme)}, transparent 55%)`,
-                      }}
-                    />
-                  )}
+                      }`}
+                  >
+                    {/* Spotlight hover effect */}
+                    {!isActive && (
+                      <div
+                        className="absolute -inset-px rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+                        style={{
+                          background: `radial-gradient(100px circle at ${coords.x}px ${coords.y}px, ${getAccentColorGlow(step.colorTheme)}, transparent 55%)`,
+                        }}
+                      />
+                    )}
 
-                  {/* Icon Node circle */}
-                  <div className={`w-9 h-9 rounded-full flex items-center justify-center font-mono text-xs font-black border relative z-10 transition-all ${
-                    isActive
+                    {/* Icon Node circle */}
+                    <div className={`w-9 h-9 rounded-full flex items-center justify-center font-mono text-xs font-black border relative z-10 transition-all ${isActive
                       ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-[0_0_10px_rgba(245,158,11,0.5)] scale-110'
                       : isCompleted
                         ? 'bg-emerald-500 text-white border-emerald-400'
                         : 'bg-slate-50 text-slate-400 border-slate-200/60'
-                  }`}>
-                    {isCompleted ? '✓' : idx + 1}
-                  </div>
+                      }`}>
+                      {isCompleted ? '✓' : idx + 1}
+                    </div>
 
-                  {/* Label & phase title details */}
-                  <div className="space-y-0.5 relative z-10">
-                    <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest block ${
-                      isActive ? 'text-amber-300' : stepTheme.text
-                    }`}>
-                      Phase {idx + 1}
-                    </span>
-                    <strong className={`text-xs sm:text-sm font-sans font-semibold tracking-tight leading-tight block ${
-                      isActive ? 'text-white' : 'text-slate-800 group-hover:text-slate-900'
-                    }`}>
-                      {step.title}
-                    </strong>
-                  </div>
+                    {/* Label & phase title details */}
+                    <div className="space-y-0.5 relative z-10">
+                      <span className={`text-[10px] font-mono font-extrabold uppercase tracking-widest block ${isActive ? 'text-amber-300' : stepTheme.text
+                        }`}>
+                        Phase {idx + 1}
+                      </span>
+                      <strong className={`text-xs sm:text-sm font-sans font-semibold tracking-tight leading-tight block ${isActive ? 'text-white' : 'text-slate-800 group-hover:text-slate-900'
+                        }`}>
+                        {step.title}
+                      </strong>
+                    </div>
 
-                  {/* Minimal status tag */}
-                  <div className="relative z-10">
-                    <span className={`text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded ${
-                      isActive
+                    {/* Minimal status tag */}
+                    <div className="relative z-10">
+                      <span className={`text-[9px] font-mono font-extrabold uppercase px-1.5 py-0.5 rounded ${isActive
                         ? 'bg-white/10 text-white'
                         : isCompleted
                           ? 'bg-emerald-50 text-emerald-600'
                           : 'bg-slate-50 text-slate-400'
-                    }`}>
-                      {isActive ? 'Current' : isCompleted ? 'Passed' : 'Upcoming'}
-                    </span>
-                  </div>
+                        }`}>
+                        {isActive ? 'Current' : isCompleted ? 'Passed' : 'Upcoming'}
+                      </span>
+                    </div>
 
-                </button>
-              );
-            })}
+                  </button>
+                );
+              })}
+            </div>
+
           </div>
-
-        </div>
+        </ScrollReveal>
 
         {/* Output Flash Card - Centered Directly Below */}
-        <div className="w-full">
+        <ScrollReveal delay={0.2} className="w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep}
@@ -316,12 +313,12 @@ export const Journey: React.FC = () => {
               className="relative p-[1.5px] rounded-[32px] bg-gradient-to-r from-slate-900/10 via-indigo-500/10 to-pink-500/10 shadow-[0_24px_60px_rgba(99,102,241,0.04)] w-full"
             >
               <div className="bg-gradient-to-b from-white/99 via-slate-50/50 to-white/99 backdrop-blur-xl rounded-[30px] p-5 sm:p-8 md:p-10 relative overflow-hidden text-left">
-                
+
                 {/* Visual Glow */}
                 <div className={`absolute -right-24 -top-24 w-80 h-80 bg-gradient-to-br ${theme.glowColor} rounded-full blur-3xl opacity-40 pointer-events-none`} />
 
                 <div className="space-y-5 relative z-10">
-                  
+
                   {/* Dynamic Headings with BIG size */}
                   <div className="space-y-3 pb-4 border-b border-slate-150/65">
                     <div className="flex flex-wrap items-center gap-2.5">
@@ -336,7 +333,7 @@ export const Journey: React.FC = () => {
                     <h3 className="text-3xl sm:text-4xl md:text-5xl font-sora font-bold text-slate-900 tracking-tight leading-none">
                       {activeDetails.title}
                     </h3>
-                    
+
                     <p className="text-lg sm:text-xl md:text-2xl text-slate-650 font-sans font-normal leading-relaxed max-w-4xl pt-1">
                       {activeDetails.learningFocus}
                     </p>
@@ -344,7 +341,7 @@ export const Journey: React.FC = () => {
 
                   {/* Clean Horizontal Grid to Reduce Vertical Empty Space */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-1">
-                    
+
                     {/* Left Column: Projects & Milestone */}
                     <div className="space-y-4">
                       {/* Projects List without boxes */}
@@ -383,7 +380,7 @@ export const Journey: React.FC = () => {
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {activeDetails.skills.map((skill) => (
-                            <span 
+                            <span
                               key={skill}
                               className={`text-sm font-sans font-semibold px-3 py-1.5 rounded-lg border shadow-sm ${theme.pillBg}`}
                             >
@@ -419,7 +416,7 @@ export const Journey: React.FC = () => {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>
