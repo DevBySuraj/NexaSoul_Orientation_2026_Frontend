@@ -16,7 +16,6 @@ import { Roadmap } from '../components/Roadmap';
 import { Journey } from '../components/Journey';
 import { WhyJoin } from '../components/WhyJoin';
 import { Outcomes } from '../components/Outcomes';
-import { Registration } from '../components/Registration';
 import { FAQ } from '../components/FAQ';
 import { Footer } from '../components/Footer';
 
@@ -24,9 +23,20 @@ export const Home: React.FC = () => {
   const [activeTab, setActiveTab] = useState('vision');
 
   useEffect(() => {
+    // Smooth scroll to target hash if redirecting from register page
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  }, []);
+
+  useEffect(() => {
     // Wait a brief tick for the DOM to be fully hydrated/rendered
     const timer = setTimeout(() => {
-      const sections = ['vision', 'about', 'theme', 'speakers', 'projects', 'roadmap', 'why-join', 'outcomes', 'register', 'faq'];
+      const sections = ['vision', 'about', 'theme', 'speakers', 'projects', 'roadmap', 'why-join', 'outcomes', 'faq'];
       const elements = sections.map(id => document.getElementById(id)).filter(Boolean) as HTMLElement[];
 
       const observerOptions = {
@@ -156,15 +166,6 @@ export const Home: React.FC = () => {
           <Outcomes />
         </div>
 
-        {/* 8. Registration - Premium glowing background with floating accent highlights */}
-        <div className="relative bg-speakers-premium overflow-hidden border-b border-white/20">
-          <div className="noise-overlay" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/5 pointer-events-none" />
-          <div className="absolute top-[10%] left-[10%] w-[45%] h-[40%] rounded-full bg-cyan-100/35 blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-[10%] right-[15%] w-[40%] h-[40%] rounded-full bg-orange-100/20 blur-[110px] pointer-events-none" />
-          
-          <Registration />
-        </div>
 
         {/* 9. FAQ - Blue with subtle aurora mesh */}
         <div className="relative bg-faq-premium overflow-hidden">

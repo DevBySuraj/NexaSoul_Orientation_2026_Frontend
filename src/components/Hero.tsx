@@ -142,6 +142,12 @@ export const Hero: React.FC = () => {
   const [rotationAngle, setRotationAngle] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    window.history.pushState({}, '', href);
+    window.dispatchEvent(new Event('popstate'));
+  };
+
   // Trigger reveal animation sequence clockwise on load, then enable rotation
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -204,7 +210,7 @@ export const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-2 font-sans">
-              <a href="#register" className="w-full sm:w-auto">
+              <a href="/register" onClick={(e) => handleLinkClick(e, '/register')} className="w-full sm:w-auto">
                 <button className="w-full sm:w-auto px-8 py-4.5 rounded-xl text-base font-semibold bg-gradient-to-r from-orange-500 via-blue-600 to-emerald-600 text-white shadow-lg shadow-indigo-500/10 hover:scale-[1.04] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer">
                   <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.59 2.58a14.98 14.98 0 00-6.16 12.12A14.98 14.98 0 009.59 21.42a15 15 0 005.84-2.58z" />

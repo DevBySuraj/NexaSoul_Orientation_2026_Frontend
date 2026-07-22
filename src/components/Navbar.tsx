@@ -10,10 +10,17 @@ import { BrandLogoPill } from './common/HeaderLogos';
 interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
+  isRegisterPage?: boolean;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegisterPage = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    window.history.pushState({}, '', href);
+    window.dispatchEvent(new Event('popstate'));
+  };
 
   return (
     <nav id="navbar" className="sticky top-0 z-50 w-full bg-white/85 backdrop-blur-md border-b border-slate-200/60 transition-all duration-300 shadow-[0_2px_20px_rgba(0,0,0,0.03)]">
@@ -21,24 +28,36 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           
           {/* Logo */}
-          <a href="#home" className="flex items-center hover:scale-[1.01] transition-transform duration-300">
+          <a 
+            href={isRegisterPage ? "/" : "#home"} 
+            onClick={(e) => {
+              if (isRegisterPage) handleLinkClick(e, '/');
+            }}
+            className="flex items-center hover:scale-[1.01] transition-transform duration-300"
+          >
             <BrandLogoPill className="py-1" />
           </a>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm font-sans font-medium">
             {[
-              { label: 'About', id: 'about' },
               { label: 'Vision', id: 'vision' },
+              { label: 'About', id: 'about' },
               { label: 'Theme', id: 'theme' },
-              { label: 'Roadmap', id: 'roadmap' },
               { label: 'Speakers', id: 'speakers' },
+              { label: 'Roadmap', id: 'roadmap' },
               { label: 'FAQs', id: 'faq' }
             ].map((tab) => (
               <a
                 key={tab.id}
-                href={`#${tab.id}`}
-                onClick={() => setActiveTab(tab.id)}
+                href={isRegisterPage ? `/#${tab.id}` : `#${tab.id}`}
+                onClick={(e) => {
+                  if (isRegisterPage) {
+                    handleLinkClick(e, `/#${tab.id}`);
+                  } else {
+                    setActiveTab(tab.id);
+                  }
+                }}
                 className={`relative py-2 transition-all duration-250 cursor-pointer tracking-wide ${
                   activeTab === tab.id ? 'text-indigo-600 font-semibold' : 'text-slate-605 hover:text-indigo-600'
                 }`}
@@ -63,13 +82,16 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
               23 July 2026
             </div>
             
-            <a
-              href="#register"
-              className="hidden md:flex px-5 py-2.5 rounded-xl text-xs font-sans font-semibold bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/20 hover:scale-[1.04] transition-all duration-300 items-center gap-1 active:scale-[0.98]"
-            >
-              <span>Register Now</span>
-              <span className="text-xs">→</span>
-            </a>
+            {!isRegisterPage && (
+              <a
+                href="/register"
+                onClick={(e) => handleLinkClick(e, '/register')}
+                className="hidden md:flex px-5 py-2.5 rounded-xl text-xs font-sans font-semibold bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/20 hover:scale-[1.04] transition-all duration-300 items-center gap-1 active:scale-[0.98]"
+              >
+                <span>Register Now</span>
+                <span className="text-xs">→</span>
+              </a>
+            )}
 
             {/* Mobile Hamburger menu trigger */}
             <button
@@ -89,19 +111,23 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
         <div className="md:hidden border-t border-slate-200/60 bg-white shadow-xl">
           <div className="px-4 py-4 space-y-1.5 flex flex-col text-sm font-sans font-medium">
             {[
-              { label: 'About', id: 'about' },
               { label: 'Vision', id: 'vision' },
+              { label: 'About', id: 'about' },
               { label: 'Theme', id: 'theme' },
-              { label: 'Roadmap', id: 'roadmap' },
               { label: 'Speakers', id: 'speakers' },
+              { label: 'Roadmap', id: 'roadmap' },
               { label: 'FAQs', id: 'faq' }
             ].map((tab) => (
               <a
                 key={tab.id}
-                href={`#${tab.id}`}
-                onClick={() => {
-                  setActiveTab(tab.id);
+                href={isRegisterPage ? `/#${tab.id}` : `#${tab.id}`}
+                onClick={(e) => {
                   setIsMenuOpen(false);
+                  if (isRegisterPage) {
+                    handleLinkClick(e, `/#${tab.id}`);
+                  } else {
+                    setActiveTab(tab.id);
+                  }
                 }}
                 className={`px-4 py-3 rounded-xl transition-all ${
                   activeTab === tab.id 
@@ -125,16 +151,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab }) => {
             </div>
 
             {/* Mobile Register Button */}
-            <div className="pt-2">
-              <a
-                href="#register"
-                onClick={() => setIsMenuOpen(false)}
-                className="w-full text-center justify-center px-5 py-3 rounded-xl text-xs font-sans font-semibold bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/20 hover:scale-[1.02] transition-all duration-300 flex items-center gap-1.5 active:scale-[0.98]"
-              >
-                <span>Register Now</span>
-                <span className="text-xs">→</span>
-              </a>
-            </div>
+            {!isRegisterPage && (
+              <div className="pt-2">
+                <a
+                  href="/register"
+                  onClick={(e) => {
+                    setIsMenuOpen(false);
+                    handleLinkClick(e, '/register');
+                  }}
+                  className="w-full text-center justify-center px-5 py-3 rounded-xl text-xs font-sans font-semibold bg-gradient-to-r from-indigo-500 via-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/20 hover:scale-[1.02] transition-all duration-300 flex items-center gap-1.5 active:scale-[0.98]"
+                >
+                  <span>Register Now</span>
+                  <span className="text-xs">→</span>
+                </a>
+              </div>
+            )}
           </div>
         </div>
       )}
