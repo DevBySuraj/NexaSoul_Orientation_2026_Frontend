@@ -91,7 +91,7 @@ export const Home: React.FC = () => {
           <Stats />
         </div>
 
-        {/* 1. Vision • Mission • Aim & About - Soft blue + lavender mesh with floating particles */}
+        {/* 1. Vision • Mission • Aim - Soft blue + lavender mesh */}
         <div className="relative bg-about-premium overflow-hidden border-b border-white/20">
           <div className="noise-overlay" />
           {/* Glow lights */}
@@ -99,11 +99,19 @@ export const Home: React.FC = () => {
           <div className="absolute bottom-[20%] right-[10%] w-[45%] h-[45%] rounded-full bg-pink-100/25 blur-[120px] pointer-events-none" />
           
           <VisionMission />
+        </div>
+
+        {/* 1.5. About Section - Light rose + indigo mesh */}
+        <div className="relative bg-about-details-premium overflow-hidden border-b border-white/20">
+          <div className="noise-overlay" />
+          <div className="absolute top-[20%] right-[20%] w-[40%] h-[40%] rounded-full bg-pink-200/10 blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-[20%] left-[10%] w-[45%] h-[45%] rounded-full bg-indigo-100/20 blur-[120px] pointer-events-none" />
+          
           <About />
         </div>
 
-        {/* 2. Frontend Fundamentals: Real-World Perspective (Event Theme) - Blue + Cyan glow */}
-        <div className="relative bg-vision-premium overflow-hidden border-b border-white/20">
+        {/* 2. Frontend Fundamentals: Real-World Perspective (Event Theme) - Emerald + Cyan mesh */}
+        <div className="relative bg-theme-premium overflow-hidden border-b border-white/20">
           <div className="noise-overlay" />
           {/* Cyan Glow spots */}
           <div className="absolute top-[30%] left-[5%] w-[45%] h-[45%] rounded-full bg-emerald-200/20 blur-[120px] pointer-events-none animate-pulse-slow" />
@@ -114,7 +122,7 @@ export const Home: React.FC = () => {
           <EventTheme />
         </div>
 
-        {/* 3. Meet Our Speakers - Ice blue gradient with orange accents near highlights */}
+        {/* 3. Meet Our Speakers - Ice blue gradient with orange accents */}
         <div className="relative bg-speakers-premium overflow-hidden border-b border-white/20">
           <div className="noise-overlay" />
           {/* Ice blue & Orange accent light near highlighted cards */}
@@ -127,8 +135,8 @@ export const Home: React.FC = () => {
           <Speakers />
         </div>
 
-        {/* 4. What You'll Build With NexaSoul (Projects) - White + light blue blend */}
-        <div className="relative bg-roadmap-premium overflow-hidden border-b border-white/20">
+        {/* 4. What You'll Build With NexaSoul (Projects) - Indigo/blue blend */}
+        <div className="relative bg-projects-premium overflow-hidden border-b border-white/20">
           <div className="noise-overlay" />
           {/* White ambient light spots */}
           <div className="absolute top-[10%] left-[30%] w-[50%] h-[30%] rounded-full bg-white/50 blur-[130px] pointer-events-none" />
@@ -137,7 +145,7 @@ export const Home: React.FC = () => {
           <Projects />
         </div>
 
-        {/* 5. Learning Roadmap (Developer Roadmap & Growth Journey) - White + light blue blend */}
+        {/* 5. Learning Roadmap (Developer Roadmap) - Symmetrical clean gradient */}
         <div className="relative bg-roadmap-premium overflow-hidden border-b border-white/20">
           <div className="noise-overlay" />
           {/* White ambient light spots */}
@@ -145,11 +153,19 @@ export const Home: React.FC = () => {
           <div className="absolute bottom-[10%] right-[10%] w-[40%] h-[40%] rounded-full bg-blue-100/35 blur-[120px] pointer-events-none animate-pulse-slow" />
           
           <Roadmap />
+        </div>
+
+        {/* 5.5. Growth Journey - Cool lavender/emerald mesh */}
+        <div className="relative bg-journey-premium overflow-hidden border-b border-white/20">
+          <div className="noise-overlay" />
+          <div className="absolute top-[10%] left-[10%] w-[40%] h-[40%] rounded-full bg-emerald-100/15 blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-[10%] right-[20%] w-[55%] h-[30%] rounded-full bg-indigo-100/20 blur-[130px] pointer-events-none" />
+          
           <Journey />
         </div>
 
-        {/* 6. Why Join NexaSoul? - Ice blue gradient with emerald accents */}
-        <div className="relative bg-speakers-premium overflow-hidden border-b border-white/20">
+        {/* 6. Why Join NexaSoul? - Rose/cyan blend */}
+        <div className="relative bg-whyjoin-premium overflow-hidden border-b border-white/20">
           <div className="noise-overlay" />
           <div className="absolute top-[5%] left-[10%] w-[45%] h-[40%] rounded-full bg-cyan-100/35 blur-[120px] pointer-events-none" />
           <div className="absolute bottom-[10%] left-[20%] w-[45%] h-[45%] rounded-full bg-emerald-100/25 blur-[135px] pointer-events-none animate-pulse-slow" />
@@ -157,11 +173,11 @@ export const Home: React.FC = () => {
           <WhyJoin />
         </div>
 
-        {/* 7. Expected Outcomes - Ice blue & emerald gradient with floating elements */}
-        <div className="relative bg-speakers-premium overflow-hidden border-b border-white/20">
+        {/* 7. Expected Outcomes - Cyan/violet/mint mesh with floating elements */}
+        <div className="relative bg-outcomes-premium overflow-hidden border-b border-white/20">
           <div className="noise-overlay" />
           <div className="absolute top-[5%] left-[10%] w-[45%] h-[40%] rounded-full bg-cyan-100/35 blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-[10%] right-[10%] w-[45%] h-[45%] rounded-full bg-emerald-100/20 blur-[135px] pointer-events-none" />
+          <div className="absolute bottom-[10%] right-[10%] w-[45%] h-[45%] rounded-full bg-emerald-100/20 blur-[135px] pointer-events-none animate-pulse-slow" />
           
           <Outcomes />
         </div>

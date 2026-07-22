@@ -198,7 +198,18 @@ export const Journey: React.FC = () => {
         
         <SectionHeading 
           badge="Growth Progression"
-          title="From Student to Industry-Ready Engineer"
+          title={
+            <>
+              From{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-indigo-600 font-extrabold font-sans">
+                Student
+              </span>{' '}
+              to{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-emerald-500 font-extrabold font-sans">
+                Industry-Ready Engineer
+              </span>
+            </>
+          }
           subtitle="Visualize your transformation as you integrate with NexaSoul's ecosystem and move away from classroom rote learning."
           className="mb-6 sm:mb-8"
         />

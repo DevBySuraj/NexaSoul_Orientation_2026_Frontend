@@ -204,67 +204,76 @@ const InteractiveCard: React.FC<{ card: BenefitCard }> = ({ card }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      className="h-full group cursor-pointer"
       style={{
         transform: `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
-        transition: tilt.rx === 0 ? 'transform 0.5s ease, box-shadow 0.3s ease, border-color 0.3s ease' : 'box-shadow 0.1s ease, border-color 0.3s ease'
+        transition: tilt.rx === 0 ? 'transform 0.5s ease' : 'none'
       }}
-      className={`group relative rounded-[24px] border border-slate-200/50 bg-white/80 backdrop-blur-md p-4 flex flex-col justify-between overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_20px_40px_rgba(99,102,241,0.04)] hover:-translate-y-2 hover:border-slate-300 ${style.border} text-left transition-all duration-300 cursor-pointer h-full`}
     >
-      {/* 1. Spotlight Mouse Overlay */}
-      <div 
-        className="absolute -inset-px rounded-[24px] pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100 z-10"
-        style={{
-          background: `radial-gradient(130px circle at ${coords.x}px ${coords.y}px, ${style.spotlight}, transparent 55%)`,
-        }}
-      />
-
-      {/* 2. Soft Ambient Bottom Right Glow */}
-      <div 
-        className="absolute -right-10 -bottom-10 w-24 h-24 rounded-full pointer-events-none blur-2xl transition-all duration-500 opacity-20 group-hover:opacity-100 z-0"
-        style={{ backgroundColor: style.glow }}
-      />
-
-      {/* 3. Glassmorphism Reflection Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.1] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
-
-      {/* Card Body Content */}
-      <div className="space-y-4 relative z-20 flex-grow flex flex-col justify-between">
+      {/* Outer gradient border wrapper */}
+      <div className="h-full p-[1.5px] rounded-[24px] bg-gradient-to-r from-blue-500/20 via-orange-500/20 to-emerald-500/20 group-hover:from-blue-500 group-hover:via-orange-500 group-hover:to-emerald-500 transition-all duration-500 shadow-[0_4px_20px_rgba(0,0,0,0.01)] group-hover:shadow-[0_20px_40px_rgba(99,102,241,0.06)] group-hover:-translate-y-2 transition-all duration-300">
         
-        {/* Top bar with tiny badges */}
-        <div className="flex items-center justify-between">
-          <span className={`px-2 py-0.5 text-[10px] font-mono font-black uppercase tracking-wider rounded-md border shadow-2xs ${style.badge}`}>
-            {card.category}
-          </span>
-          <span className="text-[10px] font-mono font-bold text-slate-450 bg-slate-50/50 border border-slate-100 px-1.5 py-0.5 rounded-md">
-            {card.tag}
-          </span>
-        </div>
+        {/* Inner white glass content card */}
+        <div
+          className="relative rounded-[22.5px] bg-white/90 backdrop-blur-md p-4 flex flex-col justify-between overflow-hidden text-left h-full"
+        >
+          {/* 1. Spotlight Mouse Overlay */}
+          <div 
+            className="absolute -inset-px rounded-[22.5px] pointer-events-none transition-opacity duration-300 opacity-0 group-hover:opacity-100 z-10"
+            style={{
+              background: `radial-gradient(130px circle at ${coords.x}px ${coords.y}px, ${style.spotlight}, transparent 55%)`,
+            }}
+          />
 
-        {/* Center/Top Visual Icon */}
-        <div className="pt-1">
-          <div className={`w-11 h-11 rounded-2xl flex items-center justify-center border transition-all duration-300 ${style.iconBg} ${style.iconHoverBg} shadow-sm group-hover:scale-110 group-hover:rotate-6`}>
-            <IconComponent className="w-5.5 h-5.5 transition-transform duration-300" />
+          {/* 2. Soft Ambient Bottom Right Glow */}
+          <div 
+            className="absolute -right-10 -bottom-10 w-24 h-24 rounded-full pointer-events-none blur-2xl transition-all duration-500 opacity-20 group-hover:opacity-100 z-0"
+            style={{ backgroundColor: style.glow }}
+          />
+
+          {/* 3. Glassmorphism Reflection Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.1] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
+
+          {/* Card Body Content */}
+          <div className="space-y-4 relative z-20 flex-grow flex flex-col justify-between">
+            
+            {/* Top bar with tiny badges */}
+            <div className="flex items-center justify-between">
+              <span className={`px-2 py-0.5 text-[10px] font-mono font-black uppercase tracking-wider rounded-md border shadow-2xs ${style.badge}`}>
+                {card.category}
+              </span>
+              <span className="text-[10px] font-mono font-bold text-slate-450 bg-slate-50/50 border border-slate-100 px-1.5 py-0.5 rounded-md">
+                {card.tag}
+              </span>
+            </div>
+
+            {/* Center/Top Visual Icon */}
+            <div className="pt-1">
+              <div className={`w-11 h-11 rounded-2xl flex items-center justify-center border transition-all duration-300 ${style.iconBg} ${style.iconHoverBg} shadow-sm group-hover:scale-110 group-hover:rotate-6`}>
+                <IconComponent className="w-5.5 h-5.5 transition-transform duration-300" />
+              </div>
+            </div>
+
+            {/* Text Container with minimal layout */}
+            <div className="space-y-1 pt-1.5">
+              <h4 className="text-base sm:text-lg font-sora font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight leading-tight">
+                {card.title}
+              </h4>
+              <p className="text-xs sm:text-sm text-slate-655 font-sans font-medium tracking-wide leading-relaxed">
+                {card.subtitle}
+              </p>
+            </div>
+
+            {/* Bottom micro indicator (Arrow fades in on hover) */}
+            <div className="flex items-center justify-between pt-2 border-t border-slate-100/60 mt-1">
+              <span className="text-[10px] font-mono font-black tracking-widest text-indigo-500/0 group-hover:text-indigo-500/100 transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0">
+                EXPLORE
+              </span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-indigo-600 group-hover:translate-x-0.5 group-hover:translate-y-[-0.5px] transition-all duration-300" />
+            </div>
+
           </div>
         </div>
-
-        {/* Text Container with minimal layout */}
-        <div className="space-y-1 pt-1.5">
-          <h4 className="text-base sm:text-lg font-sora font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors tracking-tight leading-tight">
-            {card.title}
-          </h4>
-          <p className="text-xs sm:text-sm text-slate-600 font-sans font-medium tracking-wide leading-relaxed">
-            {card.subtitle}
-          </p>
-        </div>
-
-        {/* Bottom micro indicator (Arrow fades in on hover) */}
-        <div className="flex items-center justify-between pt-2 border-t border-slate-100/60 mt-1">
-          <span className="text-[10px] font-mono font-black tracking-widest text-indigo-500/0 group-hover:text-indigo-500/100 transition-all duration-300 translate-x-[-4px] group-hover:translate-x-0">
-            EXPLORE
-          </span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-indigo-600 group-hover:translate-x-0.5 group-hover:translate-y-[-0.5px] transition-all duration-300" />
-        </div>
-
       </div>
     </div>
   );
@@ -283,7 +292,14 @@ export const WhyJoin: React.FC = () => {
         
         <SectionHeading 
           badge="EXCLUSIVE MEMBERSHIP"
-          title="Membership Benefits"
+          title={
+            <>
+              Membership{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-emerald-500 font-extrabold font-sans">
+                Benefits
+              </span>
+            </>
+          }
           subtitle="Explore the 10 premium advantages of entering the NexaSoul guild. An elite Chandigarh University circle built for ultimate full-stack acceleration."
           className="mb-6 sm:mb-8"
         />

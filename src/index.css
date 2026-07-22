@@ -146,20 +146,54 @@ html {
               linear-gradient(135deg, #e6faff 0%, #dff3ff 100%);
 }
 
-.bg-vision-premium {
-  background: radial-gradient(circle at 50% 50%, #e6faff 0%, #dff3ff 70%, #fafcfd 100%);
+.bg-about-details-premium {
+  background: radial-gradient(at 0% 0%, #fff0f5 0%, transparent 55%),
+              radial-gradient(at 100% 100%, #f4f2ff 0%, transparent 50%),
+              linear-gradient(135deg, #e6faff 0%, #eaf6ff 100%);
+}
+
+.bg-theme-premium {
+  background: radial-gradient(at 0% 100%, #e6fbf2 0%, transparent 55%),
+              radial-gradient(at 100% 0%, #e6faff 0%, transparent 50%),
+              linear-gradient(135deg, #dff3ff 0%, #fafcfd 100%);
+}
+
+.bg-speakers-premium {
+  background: radial-gradient(at 10% 20%, #fffbeb 0%, transparent 55%),
+              radial-gradient(at 90% 80%, #f4f2ff 0%, transparent 50%),
+              linear-gradient(135deg, #eaf6ff 0%, #e6faff 100%);
+}
+
+.bg-projects-premium {
+  background: radial-gradient(at 0% 0%, #f0f4ff 0%, transparent 50%),
+              radial-gradient(at 100% 100%, #eaf6ff 0%, transparent 50%),
+              linear-gradient(180deg, #fafcfd 0%, #dff3ff 100%);
 }
 
 .bg-roadmap-premium {
   background: linear-gradient(180deg, #fafcfd 0%, #eaf6ff 40%, #ffffff 100%);
 }
 
-.bg-speakers-premium {
-  background: radial-gradient(circle at 10% 20%, #dff3ff 0%, #e6faff 50%, #fafcfd 100%);
+.bg-journey-premium {
+  background: radial-gradient(at 0% 100%, #eafbf5 0%, transparent 55%),
+              radial-gradient(at 100% 0%, #f4f2ff 0%, transparent 50%),
+              linear-gradient(135deg, #ffffff 0%, #fafcfd 100%);
+}
+
+.bg-whyjoin-premium {
+  background: radial-gradient(at 10% 20%, #fff1f2 0%, transparent 50%),
+              radial-gradient(at 90% 80%, #f0fdf4 0%, transparent 50%),
+              linear-gradient(135deg, #eef2ff 0%, #fafcfd 100%);
+}
+
+.bg-outcomes-premium {
+  background: radial-gradient(at 0% 0%, #ecfeff 0%, transparent 55%),
+              radial-gradient(at 100% 100%, #f0fdf4 0%, transparent 50%),
+              linear-gradient(135deg, #f5f3ff 0%, #fafcfd 100%);
 }
 
 .bg-faq-premium {
-  background: linear-gradient(135deg, #eaf6ff 0%, #f4f2ff 50%, #e6faff 100%);
+  background: linear-gradient(135deg, #e2f1fd 0%, #f0ebfe 50%, #e8f7fa 100%);
 }
 
 .bg-footer-premium {

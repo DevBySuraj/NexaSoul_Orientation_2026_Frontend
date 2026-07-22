@@ -185,9 +185,8 @@ interface StageDetailCardProps {
 
 const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
   return (
-    <div className="relative p-[1.5px] rounded-[32px] bg-gradient-to-r from-blue-500/15 via-orange-500/10 to-emerald-500/15 shadow-[0_24px_60px_rgba(99,102,241,0.06)] group w-full">
-      {/* Custom inner glass dashboard surface */}
-      <div className="bg-gradient-to-b from-white/99 via-slate-50/70 to-white/99 backdrop-blur-xl rounded-[30px] p-5 sm:p-8 md:p-10 relative overflow-hidden">
+    <div className="relative p-[1.5px] rounded-[32px] bg-gradient-to-r from-slate-900/10 via-indigo-500/10 to-pink-500/10 shadow-[0_24px_60px_rgba(99,102,241,0.04)] w-full">
+      <div className="bg-gradient-to-b from-white/99 via-slate-50/50 to-white/99 backdrop-blur-xl rounded-[30px] p-5 sm:p-7 md:p-8 relative overflow-hidden min-h-[380px] md:min-h-[295px] lg:min-h-[275px]">
         
         {/* Soft visual lighting backdrop */}
         <div className="absolute -right-24 -top-24 w-80 h-80 bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-transparent rounded-full blur-3xl opacity-50 pointer-events-none" />
@@ -202,33 +201,30 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-6 relative z-10 text-left"
+            className="space-y-4 relative z-10 text-left"
           >
             {/* Header Title with Big Typography */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <div className="flex items-center gap-2.5">
                 <span className="text-sm font-mono font-black uppercase text-indigo-600 bg-indigo-50 border border-indigo-150 px-2.5 py-1 rounded-md tracking-wider">
                   {stage.badge}
                 </span>
-                <span className="text-sm font-mono font-bold text-slate-400">
-                  Node {stage.number} of 05 • Duration: {stage.duration}
-                </span>
               </div>
               
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-sora font-bold text-slate-900 tracking-tight leading-tight">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-sora font-bold text-slate-900 tracking-tight leading-tight">
                 {stage.title}
               </h3>
               
-              <p className="text-lg sm:text-xl md:text-2xl text-slate-650 font-sans font-normal leading-relaxed max-w-4xl">
+              <p className="text-base sm:text-lg md:text-xl text-slate-650 font-sans font-normal leading-relaxed max-w-4xl">
                 {stage.description}
               </p>
             </div>
 
             {/* Clean grid with less text, less boxes, maximum spacing */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-slate-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-3 border-t border-slate-100">
               
               {/* Left col: Tech, skills, and projects */}
-              <div className="space-y-5">
+              <div className="space-y-4">
                 
                 {/* Technologies learned */}
                 <div className="space-y-2">
@@ -275,7 +271,7 @@ const StageDetailCard: React.FC<StageDetailCardProps> = ({ stage }) => {
               </div>
 
               {/* Right col: Outcomes & Career Value */}
-              <div className="space-y-5 md:border-l md:border-slate-100 md:pl-8">
+              <div className="space-y-4 md:border-l md:border-slate-100 md:pl-8">
                 
                 {/* Outcomes list */}
                 <div className="space-y-2">
@@ -343,7 +339,14 @@ export const Roadmap: React.FC = () => {
         
         <SectionHeading 
           badge="Learning Architecture"
-          title="The Developer Roadmap"
+          title={
+            <>
+              The Developer{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-emerald-500 font-extrabold font-sans">
+                Roadmap
+              </span>
+            </>
+          }
           subtitle="An interactive progression timeline designed to scale your technical capability from standard syntax loops into complex production cloud architectures."
           className="mb-6 sm:mb-8"
         />
@@ -375,7 +378,7 @@ export const Roadmap: React.FC = () => {
                   key={stage.number}
                   onClick={() => setSelectedStage(idx)}
                   onMouseMove={handleMouseMove}
-                  className={`flex-1 min-w-[200px] md:min-w-0 text-center flex flex-col items-center gap-2 p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group ${
+                  className={`flex-1 min-w-[200px] md:min-w-0 text-center flex flex-col items-center justify-start gap-2.5 p-3 sm:p-3.5 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group min-h-[135px] sm:min-h-[145px] ${
                     isSelected
                       ? 'bg-gradient-to-br from-indigo-600 via-indigo-600 to-purple-600 border-indigo-600 text-white shadow-lg shadow-indigo-500/20 scale-105'
                       : 'bg-white border-slate-200/50 text-slate-700 hover:border-slate-300 hover:-translate-y-1'
@@ -395,13 +398,9 @@ export const Roadmap: React.FC = () => {
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center font-mono text-sm font-black border relative z-10 transition-all ${
                     isSelected
                       ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.5)] scale-110'
-                      : stage.status === 'Completed'
-                        ? 'bg-emerald-500 text-white border-emerald-400'
-                        : stage.status === 'Current'
-                          ? 'bg-blue-600 text-white border-blue-500 animate-pulse'
-                          : 'bg-slate-50 text-slate-400 border-slate-200/60'
+                      : 'bg-slate-50 text-slate-400 border-slate-200/60'
                   }`}>
-                    {stage.status === 'Completed' ? '✓' : stage.number}
+                    {stage.number}
                   </div>
 
                   {/* Stage titles details */}
@@ -416,21 +415,6 @@ export const Roadmap: React.FC = () => {
                     }`}>
                       {stage.title}
                     </strong>
-                  </div>
-
-                  {/* Tiny Status indicator pill */}
-                  <div className="relative z-10">
-                    <span className={`text-[9px] font-mono font-extrabold uppercase px-2 py-0.5 rounded ${
-                      isSelected
-                        ? 'bg-white/15 text-white'
-                        : stage.status === 'Completed'
-                          ? 'bg-emerald-50 text-emerald-600 border border-emerald-100'
-                          : stage.status === 'Current'
-                            ? 'bg-blue-50 text-blue-600 border border-blue-100'
-                            : 'bg-slate-50 text-slate-400 border border-slate-100'
-                    }`}>
-                      {stage.status}
-                    </span>
                   </div>
 
                 </button>

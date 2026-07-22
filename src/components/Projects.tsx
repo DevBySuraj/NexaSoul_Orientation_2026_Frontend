@@ -46,8 +46,32 @@ const PROJECTS_DATA: ProjectInfo[] = [
     colorTheme: 'blue'
   },
   {
-    id: 'dashboard',
+    id: 'landing',
     number: '02',
+    title: 'High-Conversion Landing Pages',
+    desc: 'Structure ultra-sleek, responsive visual hierarchies that capture and convert active users.',
+    badge: 'Commercial UI',
+    difficulty: 'Beginner',
+    buildTime: '4 Days',
+    technologies: ['Vite', 'Aesthetic CSS', 'Tailwind', 'Intersection Observer'],
+    keyOutcome: 'Flawless responsive performance & optimized SEO score',
+    colorTheme: 'orange'
+  },
+  {
+    id: 'fullstack',
+    number: '03',
+    title: 'Full-Stack Web Applications',
+    desc: 'Bridge client interfaces, robust server gateways, and live persistence database layers.',
+    badge: 'Architecture',
+    difficulty: 'Intermediate',
+    buildTime: '3 Weeks',
+    technologies: ['Express', 'Node.js', 'PostgreSQL', 'Drizzle ORM'],
+    keyOutcome: 'End-to-end database transactions & token-secured sessions',
+    colorTheme: 'purple'
+  },
+  {
+    id: 'dashboard',
+    number: '04',
     title: 'SaaS Analytics Dashboards',
     desc: 'Render complex metrics and responsive visual charts in high fidelity with interactive states.',
     badge: 'Data Systems',
@@ -58,40 +82,16 @@ const PROJECTS_DATA: ProjectInfo[] = [
     colorTheme: 'emerald'
   },
   {
-    id: 'fullstack',
-    number: '03',
-    title: 'Full-Stack Web Applications',
-    desc: 'Bridge client interfaces, robust server gateways, and live persistence database layers.',
-    badge: 'Architecture',
-    difficulty: 'Advanced',
-    buildTime: '3 Weeks',
-    technologies: ['Express', 'Node.js', 'PostgreSQL', 'Drizzle ORM'],
-    keyOutcome: 'End-to-end database transactions & token-secured sessions',
-    colorTheme: 'purple'
-  },
-  {
     id: 'aicap',
-    number: '04',
+    number: '05',
     title: 'AI-Powered Assistant Apps',
     desc: 'Query large language models to construct dynamic interactive response flows and prompt structures.',
     badge: 'Future Intelligence',
-    difficulty: 'Intermediate',
+    difficulty: 'Advanced',
     buildTime: '1 Week',
     technologies: ['React SDK', 'Google AI', 'Express Middleware', 'Text Streams'],
     keyOutcome: 'Zero-latency prompt handling & structured outputs',
     colorTheme: 'indigo'
-  },
-  {
-    id: 'landing',
-    number: '05',
-    title: 'High-Conversion Landing Pages',
-    desc: 'Structure ultra-sleek, responsive visual hierarchies that capture and convert active users.',
-    badge: 'Commercial UI',
-    difficulty: 'Beginner',
-    buildTime: '4 Days',
-    technologies: ['Vite', 'Aesthetic CSS', 'Tailwind', 'Intersection Observer'],
-    keyOutcome: 'Flawless responsive performance & optimized SEO score',
-    colorTheme: 'orange'
   },
   {
     id: 'hackathon',
@@ -179,7 +179,7 @@ const ProjectDetailCard: React.FC<ProjectDetailCardProps> = ({ project }) => {
 
   return (
     <div className="relative p-[1.5px] rounded-[32px] bg-gradient-to-r from-slate-900/10 via-indigo-500/10 to-pink-500/10 shadow-[0_24px_60px_rgba(99,102,241,0.04)] w-full">
-      <div className="bg-gradient-to-b from-white/99 via-slate-50/50 to-white/99 backdrop-blur-xl rounded-[30px] p-5 sm:p-8 md:p-10 relative overflow-hidden text-left">
+      <div className="bg-gradient-to-b from-white/99 via-slate-50/50 to-white/99 backdrop-blur-xl rounded-[30px] p-5 sm:p-8 md:p-10 relative overflow-hidden text-left min-h-[480px] sm:min-h-[400px] md:min-h-[330px] lg:min-h-[310px]">
         
         {/* Soft atmospheric gradient lighting */}
         <div className={`absolute -right-24 -top-24 w-80 h-80 bg-gradient-to-br ${theme.glowColor} rounded-full blur-3xl opacity-55 pointer-events-none`} />
@@ -194,22 +194,19 @@ const ProjectDetailCard: React.FC<ProjectDetailCardProps> = ({ project }) => {
             className="space-y-5 relative z-10"
           >
             {/* Dynamic Headings with BIG size */}
-            <div className="space-y-3 pb-4 border-b border-slate-150/65">
+            <div className="space-y-2 pb-3 border-b border-slate-150/65">
               <div className="flex flex-wrap items-center gap-2.5">
                 <span className="text-sm font-mono font-black uppercase text-indigo-600 bg-indigo-50 border border-indigo-150 px-2.5 py-1 rounded-md tracking-wider">
                   {project.badge}
                 </span>
-                <span className="text-sm font-mono font-bold text-slate-400">
-                  Node {project.number} of 06 • Expected Build Time: {project.buildTime}
-                </span>
               </div>
 
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-sora font-bold text-slate-900 tracking-tight leading-none flex items-center gap-3">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-sora font-bold text-slate-900 tracking-tight leading-none flex items-center gap-3">
                 {getProjectIcon(project.id, theme.accent)}
                 <span>{project.title}</span>
               </h3>
               
-              <p className="text-lg sm:text-xl md:text-2xl text-slate-650 font-sans font-normal leading-relaxed max-w-4xl pt-1">
+              <p className="text-lg sm:text-xl md:text-2xl text-slate-650 font-sans font-normal leading-relaxed max-w-4xl pt-0.5">
                 {project.desc}
               </p>
             </div>
@@ -311,7 +308,18 @@ export const Projects: React.FC = () => {
         
         <SectionHeading 
           badge="Product Craftsmanship"
-          title="What You'll Build With NexaSoul"
+          title={
+            <>
+              What{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-indigo-600 font-extrabold font-sans">
+                You'll
+              </span>{' '}
+              Build With{' '}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-emerald-500 font-extrabold font-sans">
+                NexaSoul
+              </span>
+            </>
+          }
           subtitle="Transition from standard textbook syntax exercises to designing, scaling, and deploying live production software systems."
           className="mb-6 sm:mb-8"
         />
@@ -344,7 +352,7 @@ export const Projects: React.FC = () => {
                   key={project.id}
                   onClick={() => setActiveProject(idx)}
                   onMouseMove={handleMouseMove}
-                  className={`flex-1 min-w-[180px] md:min-w-0 text-center flex flex-col items-center gap-2 p-3 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group ${
+                  className={`flex-1 min-w-[180px] md:min-w-0 text-center flex flex-col items-center justify-between gap-2.5 p-3 rounded-2xl border transition-all duration-300 snap-align-start relative focus:outline-none cursor-pointer group min-h-[145px] sm:min-h-[155px] ${
                     isActive
                       ? 'bg-gradient-to-br from-slate-900 to-slate-950 border-slate-900 text-white shadow-xl shadow-slate-900/10 scale-105'
                       : 'bg-white border-slate-200/50 text-slate-700 hover:border-slate-300 hover:-translate-y-1'
