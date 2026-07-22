@@ -8,10 +8,10 @@ import {
   Sparkles,
   CheckCircle2,
   AlertCircle,
-  RefreshCw,
   ArrowRight,
   Compass,
-  Lock
+  Lock,
+  Plus
 } from 'lucide-react';
 import { SectionBadge } from './common/SectionBadge';
 
@@ -260,8 +260,8 @@ export const Registration: React.FC = () => {
                     onClick={handleReset}
                     className="h-13 px-6 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-sans font-semibold text-sm sm:text-base transition-all flex items-center justify-center gap-2 border border-slate-250 cursor-pointer"
                   >
-                    <RefreshCw className="w-4 h-4 text-slate-500" />
-                    <span>Update Details</span>
+                    <Plus className="w-4 h-4 text-slate-500" />
+                    <span>New Registration</span>
                   </button>
                 </div>
               </div>
