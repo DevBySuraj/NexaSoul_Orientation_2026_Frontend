@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegis
                 <line x1="8" y1="2" x2="8" y2="6"></line>
                 <line x1="3" y1="10" x2="21" y2="10"></line>
               </svg>
-              23 July 2026
+              5 August 2026
             </div>
             
             {!isRegisterPage && (
