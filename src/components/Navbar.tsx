@@ -43,6 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegis
             {[
               { label: 'Vision', id: 'vision' },
               { label: 'About', id: 'about' },
+              { label: 'Event Flow', id: 'event-flow' },
               { label: 'Theme', id: 'theme' },
               { label: 'Speakers', id: 'speakers' },
               { label: 'Roadmap', id: 'roadmap' },
@@ -70,18 +71,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegis
             ))}
           </div>
 
-          {/* Date Badge, CTA and Mobile Menu Toggle */}
+          {/* CTA and Mobile Menu Toggle */}
           <div className="flex items-center gap-2 sm:gap-4">
-            <div className="hidden sm:flex px-4 py-2 rounded-xl border border-indigo-100 bg-indigo-50/40 text-xs font-sans font-semibold text-indigo-600 items-center gap-2">
-              <svg className="w-4 h-4 text-indigo-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              5 August 2026
-            </div>
-            
             {!isRegisterPage && (
               <a
                 href="/register"
@@ -113,6 +104,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegis
             {[
               { label: 'Vision', id: 'vision' },
               { label: 'About', id: 'about' },
+              { label: 'Event Flow', id: 'event-flow' },
               { label: 'Theme', id: 'theme' },
               { label: 'Speakers', id: 'speakers' },
               { label: 'Roadmap', id: 'roadmap' },
@@ -138,17 +130,6 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegis
                 {tab.label}
               </a>
             ))}
-            
-            {/* Mobile Date Badge */}
-            <div className="sm:hidden px-4 py-3 rounded-xl border border-indigo-50 bg-indigo-50/20 text-xs font-sans font-semibold text-indigo-600 flex items-center gap-2.5 mt-2">
-              <svg className="w-4 h-4 text-indigo-500 shrink-0 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <span>Orientation: 23 July 2026</span>
-            </div>
 
             {/* Mobile Register Button */}
             {!isRegisterPage && (

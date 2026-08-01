@@ -218,8 +218,8 @@ export const Hero: React.FC = () => {
                   <Calendar className="w-4.5 h-4.5 text-orange-600" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">Date</span>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-800">5 August 2026</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">Date & Time</span>
+                  <span className="text-xs sm:text-sm font-semibold text-slate-800">TBD • 9:30 AM - 4:30 PM</span>
                 </div>
               </div>
 

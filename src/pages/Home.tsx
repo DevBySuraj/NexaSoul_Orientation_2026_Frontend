@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
+import { EventFlow } from '../components/EventFlow';
 import { Stats } from '../components/Stats';
 import { About } from '../components/About';
 import { VisionMission } from '../components/VisionMission';
@@ -89,6 +90,7 @@ export const Home: React.FC = () => {
           
           <Hero />
           <Stats />
+          <EventFlow />
         </div>
 
         {/* 1. Vision • Mission • Aim - Soft blue + lavender mesh */}
