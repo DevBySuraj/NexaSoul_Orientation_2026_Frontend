@@ -206,7 +206,7 @@ export const Registration: React.FC = () => {
   };
 
   return (
-    <section id="register" className="py-14 md:py-20 lg:py-28 bg-transparent relative overflow-hidden">
+    <section id="register" className="pt-2 pb-12 md:pb-16 lg:pb-24 bg-transparent relative overflow-hidden">
 
       {/* Soft Multi-color Ambient Radial Glows Behind the Card */}
       <div className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-blue-500/10 via-cyan-500/5 to-transparent blur-[120px] pointer-events-none z-0" />

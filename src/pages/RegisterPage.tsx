@@ -33,10 +33,10 @@ export const RegisterPage: React.FC = () => {
 
       <Navbar activeTab="register" setActiveTab={() => {}} isRegisterPage={true} />
 
-      <main className="flex-grow relative z-10 pt-28 pb-16">
+      <main className="flex-grow relative z-10 pt-6 sm:pt-8 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back button link */}
-          <div className="max-w-6xl mx-auto mb-4 px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="max-w-6xl mx-auto mb-2 px-4 sm:px-6 lg:px-8 xl:px-12">
             <a 
               href="/"
               onClick={(e) => handleLinkClick(e, '/')}
