@@ -329,7 +329,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     q: "What is the core agenda and duration?",
-    a: "The orientation date is to be announced and it will be from 9:30 AM to 4:30 PM. It is structured into high-impact blocks: Club Introduction, Tech Roadmap Breakdown, Live Project Demonstration, Guest Speaker Insights, and an Interactive Q&A Session."
+    a: "The orientation is on 5th August 2026 and it will be from 9:30 AM to 4:30 PM. It is structured into high-impact blocks: Club Introduction, Tech Roadmap Breakdown, Live Project Demonstration, Guest Speaker Insights, and an Interactive Q&A Session."
   },
   {
     q: "How can I join NexaSoul after the orientation?",
