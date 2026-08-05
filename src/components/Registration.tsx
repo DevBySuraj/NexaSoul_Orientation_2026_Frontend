@@ -241,7 +241,7 @@ export const Registration: React.FC = () => {
                 <div className="space-y-3">
                   <h3 className="text-3xl font-sora font-bold text-slate-900 tracking-tight">Registration Locked!</h3>
                   <p className="text-base text-slate-600 font-sans font-normal leading-relaxed">
-                    Congratulations, <span className="text-indigo-600 font-sans font-semibold">{formData.fullName}</span>{formData.department && <> from the <span className="text-indigo-600 font-sans font-semibold">{formData.department}</span> department</>}! Your slot for NexaSoul Orientation 2026 has been successfully registered. See you in <span className="text-slate-900 font-sans font-semibold">the Orientation</span>.
+                    Congratulations, <span className="text-indigo-600 font-sans font-semibold">{formData.fullName}</span>{formData.department && <> from the <span className="text-indigo-600 font-sans font-semibold">{formData.department}</span> department</>}! Your slot for NexaSoul Udbhav 2026 has been successfully registered.
                   </p>
                 </div>
 
