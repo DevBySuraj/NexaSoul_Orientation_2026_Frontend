@@ -14,6 +14,7 @@ import {
   Rocket,
   Calendar,
   MapPin,
+  BookOpen,
 } from 'lucide-react';
 import { AnimatedTagline } from './AnimatedTagline';
 
@@ -234,17 +235,31 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-1 font-sans">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 mt-1 font-sans">
               <a href="/register" onClick={(e) => handleLinkClick(e, '/register')} className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-4.5 rounded-xl text-base font-semibold bg-gradient-to-r from-orange-500 via-blue-600 to-emerald-600 text-white shadow-lg shadow-indigo-500/10 hover:scale-[1.04] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer">
+                <button className="w-full sm:w-auto px-7 py-4 rounded-xl text-base font-semibold bg-gradient-to-r from-orange-500 via-blue-600 to-emerald-600 text-white shadow-lg shadow-indigo-500/10 hover:scale-[1.04] transition-all duration-300 flex items-center justify-center gap-2 active:scale-[0.98] cursor-pointer">
                   <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.59 2.58a14.98 14.98 0 00-6.16 12.12A14.98 14.98 0 009.59 21.42a15 15 0 005.84-2.58z" />
                   </svg>
                   <span>Register Now</span>
                 </button>
               </a>
+              <a
+                href="#guidelines"
+                onClick={(e) => {
+                  e.preventDefault();
+                  const el = document.getElementById('guidelines');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="w-full sm:w-auto"
+              >
+                <button className="w-full sm:w-auto px-6 py-4 rounded-xl text-base font-semibold border border-indigo-200/90 bg-white/90 hover:bg-indigo-50/60 text-indigo-700 shadow-sm hover:scale-[1.04] transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md active:scale-[0.98] cursor-pointer group">
+                  <BookOpen className="w-4 h-4 text-indigo-600 group-hover:scale-110 transition-transform" />
+                  <span>Rules & Guidelines</span>
+                </button>
+              </a>
               <a href="https://nexasoul.vercel.app" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-8 py-4.5 rounded-xl text-base font-semibold border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-sm hover:scale-[1.04] transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md active:scale-[0.98] cursor-pointer">
+                <button className="w-full sm:w-auto px-6 py-4 rounded-xl text-base font-semibold border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-sm hover:scale-[1.04] transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-md active:scale-[0.98] cursor-pointer">
                   <span>Explore NexaSoul</span>
                   <ArrowRight className="w-4 h-4 text-blue-600" />
                 </button>

@@ -43,6 +43,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegis
             {[
               { label: 'Vision', id: 'vision' },
               { label: 'About', id: 'about' },
+              { label: 'Guidelines', id: 'guidelines' },
               { label: 'Event Flow', id: 'event-flow' },
               { label: 'Theme', id: 'theme' },
               { label: 'Speakers', id: 'speakers' },
@@ -104,6 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, isRegis
             {[
               { label: 'Vision', id: 'vision' },
               { label: 'About', id: 'about' },
+              { label: 'Guidelines', id: 'guidelines' },
               { label: 'Event Flow', id: 'event-flow' },
               { label: 'Theme', id: 'theme' },
               { label: 'Speakers', id: 'speakers' },

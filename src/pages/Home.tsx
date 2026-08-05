@@ -8,6 +8,7 @@ import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { EventFlow } from '../components/EventFlow';
 import { Stats } from '../components/Stats';
+import { ParticipantGuidelines } from '../components/ParticipantGuidelines';
 import { About } from '../components/About';
 import { VisionMission } from '../components/VisionMission';
 import { EventTheme } from '../components/EventTheme';
@@ -90,6 +91,7 @@ export const Home: React.FC = () => {
           
           <Hero />
           <Stats />
+          <ParticipantGuidelines />
           <EventFlow />
         </div>
 
